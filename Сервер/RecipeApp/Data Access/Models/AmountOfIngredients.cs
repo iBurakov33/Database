@@ -10,8 +10,8 @@ namespace RecipeApp.Data_Access.Models
     public class AmountOfIngredients : IEntity
     {
         public int id { get; set; }
-        public Recipe recipe { get; set; }
-        public Ingredient ingredient { get; set; }
+        public Recipe Recipe { get; set; }
+        public Ingredient Ingredient { get; set; }
         public int NumberOfIngredients { get; set; }
     }
 }

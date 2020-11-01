@@ -12,6 +12,13 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using RecipeApp.Data_Access;
+using AutoMapper;
+using RecipeApp.Business_Logic.DTO;
+using RecipeApp.Data_Access.EFcore.Repositories;
+using RecipeApp.Data_Access.Interfaces;
+using RecipeApp.Data_Access.Models;
+using RecipeApp.Business_Logic.Interfaces;
+using RecipeApp.Business_Logic.Services;
 
 namespace RecipeApp
 {
@@ -34,6 +41,22 @@ namespace RecipeApp
             services.AddMvc();
             services.AddEntityFrameworkNpgsql().AddDbContext<RecipeApp.Data_Access.EFcore.RecipeAppWebApiContext>(optionsAction: opt =>
             opt.UseNpgsql(Configuration.GetConnectionString(name: "RecipeAppWebApiContext")));
+
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+            services.AddScoped<IRepository<Recipe>, RecipeRep>();
+            services.AddScoped<IRepository<AmountOfIngredients>, AmountRepo>();
+            services.AddScoped<IRepository<Ingredient>, IngredientRep>();
+            services.AddScoped<IRepository<RecipeApp.Data_Access.Models.Type>, TypesRepo>();
+
+            services.AddScoped<IUnitOfWork, EFUnitOfwork>();
+            services.AddScoped<IService, RecipesService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

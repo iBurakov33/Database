@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Y+DDULw2DpQvT67fC5IPTmxBKHoZ8AiDRSrKF7tPS0oYLsCwCPRaptEDgT0GlT8mLIOC4q7oPzYmLYsRFW5X/w==",
+  "dgSpecHash": "mXokumh4UJacMnZbdAk32UEOGsVEoyS44BnNSa/TiU64L4qcbfN4vvjYZfoiUdKyeRptygr3OVMdy+Zw4sGZUA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Илья\\source\\repos\\RecipeApp\\RecipeApp\\RecipeApp.csproj",
+  "projectFilePath": "C:\\Users\\Илья\\source\\repos\\Database\\Сервер\\RecipeApp\\RecipeApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Илья\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Илья\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

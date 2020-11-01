@@ -10,7 +10,7 @@ using RecipeApp.Data_Access.EFcore;
 namespace RecipeApp.Migrations
 {
     [DbContext(typeof(RecipeAppWebApiContext))]
-    [Migration("20201023181104_initial")]
+    [Migration("20201031195028_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,6 +20,31 @@ namespace RecipeApp.Migrations
                 .UseIdentityByDefaultColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
                 .HasAnnotation("ProductVersion", "5.0.0-rc.2.20475.6");
+
+            modelBuilder.Entity("RecipeApp.Data_Access.Models.AmountOfIngredients", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<int>("IngredientId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("NumberOfIngredients")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("RecipeId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("IngredientId");
+
+                    b.HasIndex("RecipeId");
+
+                    b.ToTable("AmountOfIngredients");
+                });
 
             modelBuilder.Entity("RecipeApp.Data_Access.Models.Ingredient", b =>
                 {
@@ -49,8 +74,8 @@ namespace RecipeApp.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("MakeTime")
-                        .HasColumnType("timestamp without time zone");
+                    b.Property<TimeSpan>("MakeTime")
+                        .HasColumnType("interval");
 
                     b.Property<string>("Name")
                         .HasColumnType("text");
@@ -73,6 +98,25 @@ namespace RecipeApp.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Types");
+                });
+
+            modelBuilder.Entity("RecipeApp.Data_Access.Models.AmountOfIngredients", b =>
+                {
+                    b.HasOne("RecipeApp.Data_Access.Models.Ingredient", "Ingredient")
+                        .WithMany()
+                        .HasForeignKey("IngredientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RecipeApp.Data_Access.Models.Recipe", "Recipe")
+                        .WithMany()
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Ingredient");
+
+                    b.Navigation("Recipe");
                 });
 #pragma warning restore 612, 618
         }

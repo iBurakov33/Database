@@ -57,11 +57,7 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
                 return _amountRepo;
             }
         }
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public void Save()
         {
             _db.SaveChanges();
@@ -83,13 +79,11 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
                 this.disposed = true;
             }
         }
-        /// <summary>
-        /// Пропуск финализации
-        /// </summary>
-        //public void Dispose()
-        //{
-        //    Dispose(true);
-        //    GC.SuppressFinalize(this);
-        //}
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
     }
 }

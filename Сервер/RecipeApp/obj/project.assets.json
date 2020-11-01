@@ -1138,11 +1138,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Илья\\source\\repos\\RecipeApp\\RecipeApp\\RecipeApp.csproj",
+      "projectUniqueName": "C:\\Users\\Илья\\source\\repos\\Database\\Сервер\\RecipeApp\\RecipeApp.csproj",
       "projectName": "RecipeApp",
-      "projectPath": "C:\\Users\\Илья\\source\\repos\\RecipeApp\\RecipeApp\\RecipeApp.csproj",
+      "projectPath": "C:\\Users\\Илья\\source\\repos\\Database\\Сервер\\RecipeApp\\RecipeApp.csproj",
       "packagesPath": "C:\\Users\\Илья\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Илья\\source\\repos\\RecipeApp\\RecipeApp\\obj\\",
+      "outputPath": "C:\\Users\\Илья\\source\\repos\\Database\\Сервер\\RecipeApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
