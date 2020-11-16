@@ -8,11 +8,11 @@ using RecipeApp.Data_Access.Models;
 
 namespace RecipeApp.Data_Access.EFcore.Repositories
 {
-    public class IngredientRep : IRepository<Ingredient>
+    public class IngredientRepo : IRepository<Ingredient>
     {
         private readonly RecipeAppWebApiContext _context;
 
-        public IngredientRep(RecipeAppWebApiContext context)
+        public IngredientRepo(RecipeAppWebApiContext context)
         {
             _context = context;
         }
@@ -30,12 +30,16 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
 
         public Ingredient Get(int id)
         {
-            return _context.Ingredients.Find(id);
+            var ingredient = _context.Ingredients
+                .Include(ingredient => ingredient.measurement)
+                .Single(amount => amount.id == id);
+            return ingredient;
         }
 
         public IEnumerable<Ingredient> GetAll()
         {
-            return _context.Ingredients;
+            return _context.Ingredients
+                .Include(measurement => measurement.measurement);
         }
 
         public void Update(Ingredient entity)

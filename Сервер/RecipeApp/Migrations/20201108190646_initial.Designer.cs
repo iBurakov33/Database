@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using RecipeApp.Data_Access.EFcore;
@@ -9,9 +10,10 @@ using RecipeApp.Data_Access.EFcore;
 namespace RecipeApp.Migrations
 {
     [DbContext(typeof(RecipeAppWebApiContext))]
-    partial class RecipeAppWebApiContextModelSnapshot : ModelSnapshot
+    [Migration("20201108190646_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

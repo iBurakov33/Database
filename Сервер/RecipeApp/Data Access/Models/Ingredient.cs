@@ -10,6 +10,7 @@ namespace RecipeApp.Data_Access.Models
     {
         public int id { get; set; }
         public string Name { get; set; }
-        public string Measurement { get; set; }
+        public Measurement measurement { get; set; }
+        public int measurementId { get; set; }
     }
 }

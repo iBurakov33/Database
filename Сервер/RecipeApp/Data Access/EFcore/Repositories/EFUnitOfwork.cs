@@ -14,7 +14,9 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
         private IRepository<Recipe> _recipeRepo;
         private IRepository<Ingredient> _ingredientRepo;
         private IRepository<Models.Type> _typesRepo;
-        private IRepository<AmountOfIngredients> _amountRepo;
+        private IRepository<Recipe_Ingredient> _recipe_ingredientRepo;
+        private IRepository<Recipe_Type> _recipe_typeRepo;
+        private IRepository<Measurement> _measurementRepo;
         
         public EFUnitOfwork(RecipeAppWebApiContext context)
         {
@@ -34,7 +36,7 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
             get
             {
                 if (_ingredientRepo == null)
-                    _ingredientRepo = new IngredientRep(_db);
+                    _ingredientRepo = new IngredientRepo(_db);
                 return _ingredientRepo;
             }
         }
@@ -48,16 +50,35 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
             }
         }
 
-        public IRepository<AmountOfIngredients> GetAmountRepo
+        public IRepository<Recipe_Ingredient> GetRecipe_IngredientRepo
         {
             get
             {
-                if (_amountRepo == null)
-                    _amountRepo = new AmountRepo(_db);
-                return _amountRepo;
+                if (_recipe_ingredientRepo == null)
+                    _recipe_ingredientRepo = new Recipe_IngredientRepo(_db);
+                return _recipe_ingredientRepo;
             }
         }
-        
+
+        public IRepository<Recipe_Type> GetRecipe_TypeRepo
+        {
+            get
+            {
+                if (_recipe_typeRepo == null)
+                    _recipe_typeRepo = new Recipe_TypesRepo(_db);
+                return _recipe_typeRepo;
+            }
+        }
+
+        public IRepository<Measurement> GetMeasurmentRepo
+        {
+            get
+            {
+                if (_measurementRepo == null)
+                    _measurementRepo = new MeasurementRepo(_db);
+                return _measurementRepo;
+            }
+        }
         public void Save()
         {
             _db.SaveChanges();

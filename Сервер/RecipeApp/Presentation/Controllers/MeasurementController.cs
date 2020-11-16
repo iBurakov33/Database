@@ -13,23 +13,17 @@ namespace RecipeApp.Presentation.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class RecipeController : ControllerBase
+    public class MeasurementController : ControllerBase
     {
-        private readonly IRecipeService _service;
-
-        public RecipeController(IRecipeService service)
+        private readonly IMeasurmentService _service;
+        public MeasurementController(IMeasurmentService service)
         {
             _service = service;
         }
-        [HttpGet("One_Recipe")]
-        public RecipeDTO GetRecipe(int id)
+        [HttpGet("One measurement")]
+        public MeasurementDTO GetOneMeasurement(int id)
         {
             return _service.Get(id);
-        }
-        [HttpPost("Add_Recipe")]
-        public void AddRecipe(RecipeDTO recipe)
-        {
-            _service.Add(recipe);
         }
     }
 }

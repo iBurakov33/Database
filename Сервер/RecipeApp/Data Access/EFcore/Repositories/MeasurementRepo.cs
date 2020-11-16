@@ -6,39 +6,39 @@ using Microsoft.EntityFrameworkCore;
 using RecipeApp.Data_Access.Interfaces;
 using RecipeApp.Data_Access.Models;
 
+
 namespace RecipeApp.Data_Access.EFcore.Repositories
 {
-    public class AmountRepo : IRepository<AmountOfIngredients>
+    public class MeasurementRepo : IRepository<Measurement>
     {
         private readonly RecipeAppWebApiContext _context;
-
-        public AmountRepo(RecipeAppWebApiContext context)
+        public MeasurementRepo(RecipeAppWebApiContext context)
         {
             _context = context;
         }
-        public void Add(AmountOfIngredients entity)
+    public void Add(Measurement entity)
         {
             _context.Add(entity);
         }
 
         public void Delete(int id)
         {
-            AmountOfIngredients entity = _context.AmountOfIngredients.Find(id);
+            Measurement entity = _context.Measurments.Find(id);
             if (entity != null)
-                _context.AmountOfIngredients.Remove(entity);
+                _context.Measurments.Remove(entity);
         }
 
-        public AmountOfIngredients Get(int id)
+        public Measurement Get(int id)
         {
-            return _context.AmountOfIngredients.Find(id);
+            return _context.Measurments.Find(id);
         }
 
-        public IEnumerable<AmountOfIngredients> GetAll()
+        public IEnumerable<Measurement> GetAll()
         {
-            return _context.AmountOfIngredients;
+            return _context.Measurments;
         }
 
-        public void Update(AmountOfIngredients entity)
+        public void Update(Measurement entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
         }

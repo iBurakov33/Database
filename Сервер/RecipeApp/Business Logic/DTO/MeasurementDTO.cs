@@ -5,11 +5,9 @@ using System.Threading.Tasks;
 
 namespace RecipeApp.Business_Logic.DTO
 {
-    public class IngredientDTO
+    public class MeasurementDTO
     {
         public int id { get; set; }
         public string Name { get; set; }
-        public MeasurementDTO measurement { get; set; }
-        public int measurementId { get; set; }
     }
 }

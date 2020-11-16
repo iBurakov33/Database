@@ -50,12 +50,19 @@ namespace RecipeApp
             services.AddSingleton(mapper);
 
             services.AddScoped<IRepository<Recipe>, RecipeRep>();
-            services.AddScoped<IRepository<AmountOfIngredients>, AmountRepo>();
-            services.AddScoped<IRepository<Ingredient>, IngredientRep>();
+            services.AddScoped<IRepository<Recipe_Ingredient>, Recipe_IngredientRepo>();
+            services.AddScoped<IRepository<Ingredient>, IngredientRepo>();
             services.AddScoped<IRepository<RecipeApp.Data_Access.Models.Type>, TypesRepo>();
 
             services.AddScoped<IUnitOfWork, EFUnitOfwork>();
-            services.AddScoped<IService, RecipesService>();
+
+            services.AddScoped<IRecipeService, RecipeServices>();
+            services.AddScoped<IMeasurmentService, MeasurementService>();
+            services.AddScoped<ITypesService, TypesService>();
+            services.AddScoped<IIngredientService, IngredientService>();
+            services.AddScoped<IRecipe_TypeService, Recipe_TypeService>();
+            services.AddScoped<IRecipe_IngredientService, Recipe_IngredientService>();
+
 
         }
 

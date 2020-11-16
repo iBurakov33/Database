@@ -13,21 +13,26 @@ namespace RecipeApp.Presentation.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class RecipeController : ControllerBase
+    public class Recipe_TypeController : ControllerBase
     {
-        private readonly IRecipeService _service;
-
-        public RecipeController(IRecipeService service)
+        private readonly IRecipe_TypeService _service;
+        public Recipe_TypeController(IRecipe_TypeService service)
         {
             _service = service;
         }
-        [HttpGet("One_Recipe")]
-        public RecipeDTO GetRecipe(int id)
+        [HttpGet("One_Recipe_Type")]
+        public Recipe_TypeDTO GetOneRecipe_Type(int id)
         {
             return _service.Get(id);
         }
-        [HttpPost("Add_Recipe")]
-        public void AddRecipe(RecipeDTO recipe)
+
+        [HttpGet("All_Recipes_Types")]
+        public IEnumerable<Recipe_TypeDTO> GetAllRecipes_Types()
+        {
+            return _service.GetAll();
+        }
+        [HttpPost("Add_Recipe_Type")]
+        public void AddRecipe(Recipe_TypeDTO recipe)
         {
             _service.Add(recipe);
         }

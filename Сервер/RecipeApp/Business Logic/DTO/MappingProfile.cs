@@ -15,8 +15,9 @@ namespace RecipeApp.Business_Logic.DTO
             CreateMap<Data_Access.Models.Type, TypeDTO>();
             CreateMap<Ingredient, IngredientDTO>();
             CreateMap<Recipe, RecipeDTO>();
-            CreateMap<AmountOfIngredients, AmountDTO>();
-            
+            CreateMap<Recipe_Ingredient, Recipe_IngredientDTO>();
+            CreateMap<Recipe_Type, Recipe_TypeDTO>();
+            CreateMap<Measurement, MeasurementDTO>();
         }
     }
 }
