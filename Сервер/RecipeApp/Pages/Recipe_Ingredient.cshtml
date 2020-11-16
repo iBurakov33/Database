@@ -1,0 +1,20 @@
+﻿@page
+@model RecipeApp.Pages.Recipe_IngredientModel
+
+@{
+    ViewData["Title"] = "Список ингредиентов в рецепте";
+}
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+        <tr><th>Name</th><th>Type</th><th>Ingredients</th><th>Quantity</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var recipe in Model.recipe_Ingredients)
+        {
+            <tr><td>@recipe.Recipe_Type.recipe.Name</td><td>@recipe.Recipe_Type.type.Name</td><td>@recipe.Ingredient.Name</td>
+            <td>@recipe.Quantity</td></tr>
+        }
+    </tbody>
+</table>

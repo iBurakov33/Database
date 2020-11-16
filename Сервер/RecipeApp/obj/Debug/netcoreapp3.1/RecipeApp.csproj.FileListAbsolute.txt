@@ -90,3 +90,16 @@ C:\Users\Илья\source\repos\Database\Сервер\RecipeApp\obj\Debug\netcore
 C:\Users\Илья\source\repos\Database\Сервер\RecipeApp\obj\Debug\netcoreapp3.1\RecipeApp.dll
 C:\Users\Илья\source\repos\Database\Сервер\RecipeApp\obj\Debug\netcoreapp3.1\RecipeApp.pdb
 C:\Users\Илья\source\repos\Database\Сервер\RecipeApp\obj\Debug\netcoreapp3.1\RecipeApp.genruntimeconfig.cache
+C:\Users\Илья\source\repos\Database\Сервер\RecipeApp\obj\Debug\netcoreapp3.1\RecipeApp.RazorAssemblyInfo.cache
+C:\Users\Илья\source\repos\Database\Сервер\RecipeApp\obj\Debug\netcoreapp3.1\RecipeApp.RazorAssemblyInfo.cs
+C:\Users\Илья\source\repos\Database\Сервер\RecipeApp\bin\Debug\netcoreapp3.1\RecipeApp.Views.dll
+C:\Users\Илья\source\repos\Database\Сервер\RecipeApp\bin\Debug\netcoreapp3.1\RecipeApp.Views.pdb
+C:\Users\Илья\source\repos\Database\Сервер\RecipeApp\obj\Debug\netcoreapp3.1\RecipeApp.TagHelpers.input.cache
+C:\Users\Илья\source\repos\Database\Сервер\RecipeApp\obj\Debug\netcoreapp3.1\RecipeApp.TagHelpers.output.cache
+C:\Users\Илья\source\repos\Database\Сервер\RecipeApp\obj\Debug\netcoreapp3.1\RecipeApp.RazorCoreGenerate.cache
+C:\Users\Илья\source\repos\Database\Сервер\RecipeApp\obj\Debug\netcoreapp3.1\RecipeApp.RazorTargetAssemblyInfo.cs
+C:\Users\Илья\source\repos\Database\Сервер\RecipeApp\obj\Debug\netcoreapp3.1\RecipeApp.Views.pdb
+C:\Users\Илья\source\repos\Database\Сервер\RecipeApp\obj\Debug\netcoreapp3.1\Razor\Pages\Index.cshtml.g.cs
+C:\Users\Илья\source\repos\Database\Сервер\RecipeApp\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_Layout.cshtml.g.cs
+C:\Users\Илья\source\repos\Database\Сервер\RecipeApp\obj\Debug\netcoreapp3.1\Razor\Pages\_ViewStart.cshtml.g.cs
+C:\Users\Илья\source\repos\Database\Сервер\RecipeApp\obj\Debug\netcoreapp3.1\Razor\Pages\Recipe_Ingredient.cshtml.g.cs

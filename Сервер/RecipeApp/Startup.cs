@@ -19,6 +19,7 @@ using RecipeApp.Data_Access.Interfaces;
 using RecipeApp.Data_Access.Models;
 using RecipeApp.Business_Logic.Interfaces;
 using RecipeApp.Business_Logic.Services;
+using RecipeApp.Pages;
 
 namespace RecipeApp
 {
@@ -34,11 +35,13 @@ namespace RecipeApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
             services.AddControllers();
 
-            services.AddSwaggerGen(c => c.SwaggerDoc(name: "v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "RecipeApp API", Version = "v1"}));
+            
+            //services.AddSwaggerGen(c => c.SwaggerDoc(name: "v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "RecipeApp API", Version = "v1"}));
 
-            services.AddMvc();
+            
             services.AddEntityFrameworkNpgsql().AddDbContext<RecipeApp.Data_Access.EFcore.RecipeAppWebApiContext>(optionsAction: opt =>
             opt.UseNpgsql(Configuration.GetConnectionString(name: "RecipeAppWebApiContext")));
 
@@ -74,9 +77,9 @@ namespace RecipeApp
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseSwagger();
+            //app.UseSwagger();
 
-            app.UseSwaggerUI(c => c.SwaggerEndpoint(url: "/swagger/v1/swagger.json", name: "RecipeApp API v1")) ;
+            //app.UseSwaggerUI(c => c.SwaggerEndpoint(url: "/swagger/v1/swagger.json", name: "RecipeApp API v1")) ;
 
             app.UseHttpsRedirection();
 
@@ -86,7 +89,7 @@ namespace RecipeApp
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapRazorPages();
             });
         }
     }

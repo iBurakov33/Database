@@ -1,0 +1,19 @@
+﻿@page
+@model RecipeApp.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "Список рецептов";
+}
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+        <tr><th>id</th><th>Name</th><th>Make Time</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var recipe in Model.recipes)
+        {
+            <tr><td>@recipe.id</td><td>@recipe.Name</td><td>@recipe.MakeTime</td><td>@recipe.Description</td></tr>
+        }
+    </tbody>
+</table>
