@@ -64,6 +64,9 @@ namespace RecipeApp.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
+                    b.Property<string>("Image")
+                        .HasColumnType("text");
+
                     b.Property<TimeSpan>("MakeTime")
                         .HasColumnType("interval");
 

@@ -11,6 +11,7 @@ namespace RecipeApp.Data_Access.Models
         public int id { get; set; }
         public string Name { get; set; }
         public TimeSpan MakeTime { get; set; }
+        public Uri Image { get; set; }
         public string Description { get; set; }
     }
 }
