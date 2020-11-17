@@ -82,6 +82,7 @@ namespace RecipeApp
             //app.UseSwaggerUI(c => c.SwaggerEndpoint(url: "/swagger/v1/swagger.json", name: "RecipeApp API v1")) ;
 
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
 
             app.UseRouting();
 
