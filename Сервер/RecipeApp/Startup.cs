@@ -90,7 +90,7 @@ namespace RecipeApp
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapRazorPages();
+                endpoints.MapRazorPages();//MapSwagger();
             });
         }
     }

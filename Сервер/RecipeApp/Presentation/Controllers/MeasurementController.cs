@@ -25,5 +25,10 @@ namespace RecipeApp.Presentation.Controllers
         {
             return _service.Get(id);
         }
+        [HttpGet("All measurements")]
+        public IEnumerable<MeasurementDTO> GetAllMeasurements()
+        {
+            return _service.GetAll();
+        }
     }
 }

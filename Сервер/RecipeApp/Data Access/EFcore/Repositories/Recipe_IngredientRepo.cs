@@ -44,7 +44,8 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
             return _context.Recipes_Ingredients
                 .Include(recipe => recipe.recipe_type.recipe)
                 .Include(type => type.recipe_type.type)
-                .Include(ingredient => ingredient.ingredient);
+                .Include(ingredient => ingredient.ingredient)
+                .Include(measurement => measurement.ingredient.measurement);
         }
 
         public void Update(Recipe_Ingredient entity)
