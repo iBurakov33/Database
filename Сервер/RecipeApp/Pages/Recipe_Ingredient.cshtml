@@ -13,6 +13,7 @@
         </tbody>
     </table>
     <img src=@recipe.Image>
+    <a href=@Url.Page("/AddIngredients"@*, new { id = recipe.id }*@)>Добавить ингредиентов</a>
     <table class="table">
         <thead>
             <tr><th>Ingredients</th><th>Quantity</th><th>Measurement</th></tr>

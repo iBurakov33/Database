@@ -4,7 +4,7 @@
     ViewData["Title"] = "Список рецептов";
 }
 <h2>@ViewData["Title"]</h2>
-
+<p><a asp-page="AddRecipe">Добавить рецепт</a></p>
 @foreach (var recipe in Model.recipes)
 {
     <div class="col l4 s12 m7">

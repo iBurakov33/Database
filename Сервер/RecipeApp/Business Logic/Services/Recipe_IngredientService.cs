@@ -48,7 +48,7 @@ namespace RecipeApp.Business_Logic.Services
         }
         public IEnumerable<Recipe_IngredientDTO> GetAll()
         {
-            var recipes = _db.GetRecipe_IngredientRepo.GetAll().OrderByDescending(recipes => recipes.recipe_type.recipe.MakeTime);
+            var recipes = _db.GetRecipe_IngredientRepo.GetAll().OrderByDescending(recipes => recipes.Recipe_Type.recipe.MakeTime);
             return _mapper.Map<IEnumerable<Recipe_Ingredient>, IEnumerable<Recipe_IngredientDTO>>(recipes);
         }
     }

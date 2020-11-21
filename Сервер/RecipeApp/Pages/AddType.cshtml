@@ -1,0 +1,13 @@
+﻿@page
+@model RecipeApp.Pages.AddTypeModel
+@{
+    ViewData["Title"] = "Добавление типа к рецепту";
+}
+<h2>@ViewData["Title"]</h2>
+<div asp-validation-summary="All"></div>
+<form method="POST">
+    <div><label>id</label><br /><input asp-for="type.id" type="number" /></div>
+    <div><label>Рецепт</label><br /><input asp-for="type.RecipeId" /></div>
+    <div><label>Тип</label><br /><input asp-for="type.TypeId" /></div>
+    <input type="submit" value="Отправить" />
+</form>

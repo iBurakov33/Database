@@ -10,9 +10,9 @@ namespace RecipeApp.Business_Logic.DTO
     {
         public int id { get; set; }
         public Recipe_TypeDTO Recipe_Type { get; set; }
-        public int recipe_typeId { get; set; }
+        public int Recipe_TypeId { get; set; }
         public IngredientDTO Ingredient { get; set; }
-        public int ingredientId { get; set; }
+        public int IngredientId { get; set; }
         public int Quantity { get; set; }
     }
 }

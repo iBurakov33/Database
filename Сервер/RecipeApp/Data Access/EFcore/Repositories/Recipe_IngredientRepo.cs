@@ -31,10 +31,10 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
         public Recipe_Ingredient Get(int id)
         {
             var amount = _context.Recipes_Ingredients
-                .Include(recipe => recipe.recipe_type.recipe)
-                .Include(type => type.recipe_type.type)
-                .Include(ingredient => ingredient.ingredient)
-                .Include(measurement => measurement.ingredient.measurement)
+                .Include(recipe => recipe.Recipe_Type.recipe)
+                .Include(type => type.Recipe_Type.type)
+                .Include(ingredient => ingredient.Ingredient)
+                .Include(measurement => measurement.Ingredient.measurement)
                 .Single(amount => amount.id == id);
             return amount;
         }
@@ -42,10 +42,10 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
         public IEnumerable<Recipe_Ingredient> GetAll()
         {
             return _context.Recipes_Ingredients
-                .Include(recipe => recipe.recipe_type.recipe)
-                .Include(type => type.recipe_type.type)
-                .Include(ingredient => ingredient.ingredient)
-                .Include(measurement => measurement.ingredient.measurement);
+                .Include(recipe => recipe.Recipe_Type.recipe)
+                .Include(type => type.Recipe_Type.type)
+                .Include(ingredient => ingredient.Ingredient)
+                .Include(measurement => measurement.Ingredient.measurement);
         }
 
         public void Update(Recipe_Ingredient entity)
