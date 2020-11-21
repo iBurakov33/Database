@@ -45,6 +45,7 @@ namespace RecipeApp.Business_Logic.Services
         public void Delete(int id)
         {
             _db.GetRecipeRepo.Delete(id);
+            _db.Save();
         }
 
         public void Update(RecipeDTO entity)

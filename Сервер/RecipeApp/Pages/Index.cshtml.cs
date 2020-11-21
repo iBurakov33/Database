@@ -22,5 +22,6 @@ namespace RecipeApp.Pages
             recipes = _service.GetAll();
             //string url = Url.Page("/Recipe_ingredient", new { id = 1 });
         }
+        
     }
 }

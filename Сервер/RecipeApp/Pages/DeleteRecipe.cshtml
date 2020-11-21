@@ -1,0 +1,17 @@
+﻿@page
+@model RecipeApp.Pages.DeleteRecipeModel
+@{
+    ViewData["Title"] = "Удаление рецепта";
+}
+<h2>@ViewData["Title"]</h2>
+@{ var recipe = Model.recipe;}
+<div asp-validation-summary="All"></div>
+<input asp-for="recipe.id" type="hidden" />
+<form method="POST" asp-route-id="@recipe.id">
+    <div>
+        <label>Удаление рецепта</label><br /><input asp-for="recipe.Name" />
+        <span asp-validation-for="recipe.Name"></span>
+    </div>
+    <input type="submit" value="Удалить" />
+</form>
+

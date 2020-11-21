@@ -20,17 +20,13 @@
                 </p>
             </div>
             <div class="card-action">
-                <a href=@Url.Page("/Recipe_ingredient", new { id = recipe.id })>Подробный рецепт</a>
+                <a href=@Url.Page("/Recipe_ingredient", new { id = recipe.id })>Подробное описание рецепта</a>
             </div>
-            
             <div class="card-action">
                 <a href=@Url.Page("/UpdateRecipe", new { id = recipe.id})>Редактировать рецепт</a>
-                @**@
             </div>
             <div class="card-action">
-                @*<button type="submit" asp-page-handler="delete" asp-route="@recipe.id">
-                    Удалить
-                </button>*@
+                <a href=@Url.Page("/DeleteRecipe", new { id = recipe.id})>Удалить рецепт</a>
             </div>
         </div>
     </div>
