@@ -5,6 +5,7 @@
 }
 <h2>@ViewData["Title"]</h2>
 <p><a asp-page="AddRecipe">Добавить рецепт</a></p>
+
 @foreach (var recipe in Model.recipes)
 {
     <div class="col l4 s12 m7">
@@ -20,7 +21,17 @@
             </div>
             <div class="card-action">
                 <a href=@Url.Page("/Recipe_ingredient", new { id = recipe.id })>Подробный рецепт</a>
-            </div> 
+            </div>
+            
+            <div class="card-action">
+                <a href=@Url.Page("/UpdateRecipe", new { id = recipe.id})>Редактировать рецепт</a>
+                @**@
+            </div>
+            <div class="card-action">
+                @*<button type="submit" asp-page-handler="delete" asp-route="@recipe.id">
+                    Удалить
+                </button>*@
+            </div>
         </div>
     </div>
 }

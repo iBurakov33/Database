@@ -37,6 +37,7 @@ namespace RecipeApp.Business_Logic.Services
 
         public void Update(Recipe_TypeDTO entity)
         {
+            //
             Recipe_Type recipe_Type = _mapper.Map<Recipe_Type>(entity);
             _db.GetRecipe_TypeRepo.Update(recipe_Type);
             _db.Save();

@@ -102,7 +102,7 @@ namespace RecipeApp.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Recipe_TypeId = table.Column<int>(type: "integer", nullable: false),
+                    RecipeId = table.Column<int>(type: "integer", nullable: false),
                     IngredientId = table.Column<int>(type: "integer", nullable: false),
                     Quantity = table.Column<int>(type: "integer", nullable: false)
                 },
@@ -116,9 +116,9 @@ namespace RecipeApp.Migrations
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Recipes_Ingredients_Recipes_Types_Recipe_TypeId",
-                        column: x => x.Recipe_TypeId,
-                        principalTable: "Recipes_Types",
+                        name: "FK_Recipes_Ingredients_Recipes_RecipeId",
+                        column: x => x.RecipeId,
+                        principalTable: "Recipes",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -134,9 +134,9 @@ namespace RecipeApp.Migrations
                 column: "IngredientId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Recipes_Ingredients_Recipe_TypeId",
+                name: "IX_Recipes_Ingredients_RecipeId",
                 table: "Recipes_Ingredients",
-                column: "Recipe_TypeId");
+                column: "RecipeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Recipes_Types_RecipeId",
@@ -155,19 +155,19 @@ namespace RecipeApp.Migrations
                 name: "Recipes_Ingredients");
 
             migrationBuilder.DropTable(
-                name: "Ingredients");
-
-            migrationBuilder.DropTable(
                 name: "Recipes_Types");
 
             migrationBuilder.DropTable(
-                name: "Measurments");
+                name: "Ingredients");
 
             migrationBuilder.DropTable(
                 name: "Recipes");
 
             migrationBuilder.DropTable(
                 name: "Types");
+
+            migrationBuilder.DropTable(
+                name: "Measurments");
         }
     }
 }

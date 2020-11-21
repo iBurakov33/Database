@@ -86,35 +86,35 @@ namespace RecipeApp.Data_Access.Models
             //context.Recipes_Ingredients.Add(new Recipe_Ingredient 
             //{ 
             //    id = 1,
-            //    Recipe_TypeId = 1, 
+            //    RecipeId = 1, 
             //    IngredientId = 1, 
             //    Quantity = 500 
             //});
             //context.Recipes_Ingredients.Add(new Recipe_Ingredient
             //{
             //    id = 2,
-            //    Recipe_TypeId = 1,
+            //    RecipeId = 1,
             //    IngredientId = 2,
             //    Quantity = 2
             //});
             //context.Recipes_Ingredients.Add(new Recipe_Ingredient
             //{
             //    id = 3,
-            //    Recipe_TypeId = 1,
+            //    RecipeId = 1,
             //    IngredientId = 3,
             //    Quantity = 6
             //});
             //context.Recipes_Ingredients.Add(new Recipe_Ingredient
             //{
             //    id = 4,
-            //    Recipe_TypeId = 1,
+            //    RecipeId = 1,
             //    IngredientId = 4,
             //    Quantity = 2
             //});
             //context.Recipes_Ingredients.Add(new Recipe_Ingredient
             //{
             //    id = 5,
-            //    Recipe_TypeId = 1,
+            //    RecipeId = 1,
             //    IngredientId = 5,
             //    Quantity = 5
             //});

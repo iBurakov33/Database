@@ -39,6 +39,7 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
 
         public void Update(Models.Type entity)
         {
+            //Models.Type entity = _context.Types.Find(id);
             _context.Entry(entity).State = EntityState.Modified;
         }
     }

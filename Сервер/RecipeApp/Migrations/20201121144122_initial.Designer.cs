@@ -10,7 +10,7 @@ using RecipeApp.Data_Access.EFcore;
 namespace RecipeApp.Migrations
 {
     [DbContext(typeof(RecipeAppWebApiContext))]
-    [Migration("20201119181418_initial")]
+    [Migration("20201121144122_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -93,14 +93,14 @@ namespace RecipeApp.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
 
-                    b.Property<int>("Recipe_TypeId")
+                    b.Property<int>("RecipeId")
                         .HasColumnType("integer");
 
                     b.HasKey("id");
 
                     b.HasIndex("IngredientId");
 
-                    b.HasIndex("Recipe_TypeId");
+                    b.HasIndex("RecipeId");
 
                     b.ToTable("Recipes_Ingredients");
                 });
@@ -161,15 +161,15 @@ namespace RecipeApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RecipeApp.Data_Access.Models.Recipe_Type", "Recipe_Type")
+                    b.HasOne("RecipeApp.Data_Access.Models.Recipe", "Recipe")
                         .WithMany()
-                        .HasForeignKey("Recipe_TypeId")
+                        .HasForeignKey("RecipeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Ingredient");
 
-                    b.Navigation("Recipe_Type");
+                    b.Navigation("Recipe");
                 });
 
             modelBuilder.Entity("RecipeApp.Data_Access.Models.Recipe_Type", b =>

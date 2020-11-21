@@ -1,0 +1,31 @@
+﻿@page
+@model RecipeApp.Pages.UpdateRecipeModel
+@{
+    ViewData["Title"] = "Редактирование рецепта";
+}
+<h2>@ViewData["Title"]</h2>
+<div asp-validation-summary="All"></div>
+<input asp-for="recipe.id" type="hidden" />
+<form method="POST">
+    <div>
+        <label>id</label><br /><input asp-for="recipe.id" type="number" />
+        <span asp-validation-for="recipe.id"></span>
+    </div>
+    <div>
+        <label>Имя</label><br /><input asp-for="recipe.Name" />
+        <span asp-validation-for="recipe.Name"></span>
+    </div>
+    <div>
+        <label>Время готовки</label><br /><input asp-for="recipe.MakeTime" type="time" />
+        <span asp-validation-for="recipe.MakeTime"></span>
+    </div>
+    <div>
+        <label>Изображение</label><br /><input asp-for="recipe.Image" />
+        <span asp-validation-for="recipe.Image"></span>
+    </div>
+    <div>
+        <label>Описание</label><br /><input asp-for="recipe.Description" />
+        <span asp-validation-for="recipe.Description"></span>
+    </div>
+    <input type="submit" value="Отправить" />
+</form>

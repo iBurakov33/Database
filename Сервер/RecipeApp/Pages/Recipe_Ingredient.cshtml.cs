@@ -13,12 +13,15 @@ namespace RecipeApp.Pages
     {
         private readonly IRecipe_IngredientService _serviceR_I;
         private readonly IRecipeService _serviceR;
+        private readonly IRecipe_TypeService _TypeService;
         public RecipeDTO recipe_Ingredient { get; set; }
         public IEnumerable<Recipe_IngredientDTO> recipe_Ingredients { get; set; }
-        public Recipe_IngredientModel(IRecipe_IngredientService dbR_I, IRecipeService dbR)
+        public IEnumerable<Recipe_TypeDTO> recipe_Types { get; set; }
+        public Recipe_IngredientModel(IRecipe_IngredientService dbR_I, IRecipeService dbR, IRecipe_TypeService dbR_T)
         {
             _serviceR_I = dbR_I;
             _serviceR = dbR;
+            _TypeService = dbR_T;
         }
         public void OnGet(int id)
         {
@@ -26,6 +29,7 @@ namespace RecipeApp.Pages
             //Recipeid = _service.Get(id).
             recipe_Ingredient = _serviceR.Get(id);
             recipe_Ingredients = _serviceR_I.GetAll();
+            recipe_Types = _TypeService.GetAll();
         }
     }
 }

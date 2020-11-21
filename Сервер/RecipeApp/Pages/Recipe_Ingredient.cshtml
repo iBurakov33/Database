@@ -9,7 +9,11 @@
 <h3>@recipe.Name</h3>
     <table class="table">
         <tbody>
-            @*<tr>@recipe.Recipe_Type.type.Name</tr>*@
+            @foreach (var type in Model.recipe_Types.Where(id => id.RecipeId == recipe.id))
+            {
+                <tr>@type.type.Name</tr>
+            }
+
         </tbody>
     </table>
     <img src=@recipe.Image>
@@ -19,8 +23,8 @@
             <tr><th>Ingredients</th><th>Quantity</th><th>Measurement</th></tr>
         </thead>
         <tbody>
-        @foreach (var ing in Model.recipe_Ingredients.Where(id => id.Recipe_Type.id == recipe.id))
-        { 
+        @foreach (var ing in Model.recipe_Ingredients.Where(id => id.RecipeId == recipe.id))
+        {
             <tr>
                 <td>@ing.Ingredient.Name</td>
                 <td>@ing.Quantity</td>

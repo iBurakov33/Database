@@ -108,3 +108,4 @@ C:\Users\Илья\source\repos\Database\Сервер\RecipeApp\obj\Debug\netcore
 C:\Users\Илья\source\repos\Database\Сервер\RecipeApp\obj\Debug\netcoreapp3.1\Razor\Pages\AddRecipe.cshtml.g.cs
 C:\Users\Илья\source\repos\Database\Сервер\RecipeApp\obj\Debug\netcoreapp3.1\Razor\Pages\AddType.cshtml.g.cs
 C:\Users\Илья\source\repos\Database\Сервер\RecipeApp\obj\Debug\netcoreapp3.1\Razor\Pages\AddIngredients.cshtml.g.cs
+C:\Users\Илья\source\repos\Database\Сервер\RecipeApp\obj\Debug\netcoreapp3.1\Razor\Pages\UpdateRecipe.cshtml.g.cs
