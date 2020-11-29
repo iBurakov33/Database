@@ -45,10 +45,12 @@ namespace RecipeApp.Business_Logic.Services
         public void Delete(int id)
         {
             _db.GetRecipeRepo.Delete(id);
+            _db.Save();
         }
 
         public void Update(RecipeDTO entity)
         {
+            //
             Recipe recipe = _mapper.Map<Recipe>(entity);
             _db.GetRecipeRepo.Update(recipe);
             _db.Save();

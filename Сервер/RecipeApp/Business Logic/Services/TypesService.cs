@@ -49,6 +49,7 @@ namespace RecipeApp.Business_Logic.Services
 
         public void Update(TypeDTO entity)
         {
+            //
             Data_Access.Models.Type type = _mapper.Map<Data_Access.Models.Type>(entity);
             _db.GetTypeRepo.Update(type);
             _db.Save();

@@ -102,23 +102,23 @@ namespace RecipeApp.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    recipe_typeId = table.Column<int>(type: "integer", nullable: false),
-                    ingredientId = table.Column<int>(type: "integer", nullable: false),
+                    RecipeId = table.Column<int>(type: "integer", nullable: false),
+                    IngredientId = table.Column<int>(type: "integer", nullable: false),
                     Quantity = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Recipes_Ingredients", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Recipes_Ingredients_Ingredients_ingredientId",
-                        column: x => x.ingredientId,
+                        name: "FK_Recipes_Ingredients_Ingredients_IngredientId",
+                        column: x => x.IngredientId,
                         principalTable: "Ingredients",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Recipes_Ingredients_Recipes_Types_recipe_typeId",
-                        column: x => x.recipe_typeId,
-                        principalTable: "Recipes_Types",
+                        name: "FK_Recipes_Ingredients_Recipes_RecipeId",
+                        column: x => x.RecipeId,
+                        principalTable: "Recipes",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -129,14 +129,14 @@ namespace RecipeApp.Migrations
                 column: "measurementId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Recipes_Ingredients_ingredientId",
+                name: "IX_Recipes_Ingredients_IngredientId",
                 table: "Recipes_Ingredients",
-                column: "ingredientId");
+                column: "IngredientId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Recipes_Ingredients_recipe_typeId",
+                name: "IX_Recipes_Ingredients_RecipeId",
                 table: "Recipes_Ingredients",
-                column: "recipe_typeId");
+                column: "RecipeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Recipes_Types_RecipeId",
@@ -155,19 +155,19 @@ namespace RecipeApp.Migrations
                 name: "Recipes_Ingredients");
 
             migrationBuilder.DropTable(
-                name: "Ingredients");
-
-            migrationBuilder.DropTable(
                 name: "Recipes_Types");
 
             migrationBuilder.DropTable(
-                name: "Measurments");
+                name: "Ingredients");
 
             migrationBuilder.DropTable(
                 name: "Recipes");
 
             migrationBuilder.DropTable(
                 name: "Types");
+
+            migrationBuilder.DropTable(
+                name: "Measurments");
         }
     }
 }

@@ -10,10 +10,10 @@ namespace RecipeApp.Data_Access.Models
     public class Recipe_Ingredient : IEntity
     {
         public int id { get; set; }
-        public Recipe_Type recipe_type { get; set; }
-        public int recipe_typeId { get; set; }
-        public Ingredient ingredient { get; set; }
-        public int ingredientId { get; set; }
+        public Recipe Recipe { get; set; }
+        public int RecipeId { get; set; }
+        public Ingredient Ingredient { get; set; }
+        public int IngredientId { get; set; }
         public int Quantity { get; set; }
     }
 }

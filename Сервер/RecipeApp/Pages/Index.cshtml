@@ -4,6 +4,7 @@
     ViewData["Title"] = "Список рецептов";
 }
 <h2>@ViewData["Title"]</h2>
+<p><a asp-page="AddRecipe">Добавить рецепт</a></p>
 
 @foreach (var recipe in Model.recipes)
 {
@@ -19,9 +20,14 @@
                 </p>
             </div>
             <div class="card-action">
-                <a href="#">This is a link</a>
+                <a href=@Url.Page("/Recipe_ingredient", new { id = recipe.id })>Подробное описание рецепта</a>
             </div>
-                
+            <div class="card-action">
+                <a href=@Url.Page("/UpdateRecipe", new { id = recipe.id})>Редактировать рецепт</a>
+            </div>
+            <div class="card-action">
+                <a href=@Url.Page("/DeleteRecipe", new { id = recipe.id})>Удалить рецепт</a>
+            </div>
         </div>
     </div>
 }

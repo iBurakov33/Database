@@ -2,19 +2,34 @@
 @model RecipeApp.Pages.Recipe_IngredientModel
 
 @{
-    ViewData["Title"] = "Список ингредиентов в рецепте";
+    ViewData["Title"] = "Подробный рецепт";
 }
 <h2>@ViewData["Title"]</h2>
+@{var recipe = Model.recipe_Ingredient;}
+<h3>@recipe.Name</h3>
+    <table class="table">
+        <tbody>
+            @foreach (var type in Model.recipe_Types.Where(id => id.RecipeId == recipe.id))
+            {
+                <tr>@type.type.Name</tr>
+            }
 
-<table class="table">
-    <thead>
-        <tr><th>Name</th><th>Type</th><th>Ingredients</th><th>Quantity</th></tr>
-    </thead>
-    <tbody>
-        @foreach (var recipe in Model.recipe_Ingredients)
+        </tbody>
+    </table>
+    <img src=@recipe.Image>
+    <a href=@Url.Page("/AddIngredients"@*, new { id = recipe.id }*@)>Добавить ингредиентов</a>
+    <table class="table">
+        <thead>
+            <tr><th>Ingredients</th><th>Quantity</th><th>Measurement</th></tr>
+        </thead>
+        <tbody>
+        @foreach (var ing in Model.recipe_Ingredients.Where(id => id.RecipeId == recipe.id))
         {
-            <tr><td>@recipe.Recipe_Type.recipe.Name</td><td>@recipe.Recipe_Type.type.Name</td><td>@recipe.Ingredient.Name</td>
-            <td>@recipe.Quantity</td></tr>
-        }
-    </tbody>
-</table>
+            <tr>
+                <td>@ing.Ingredient.Name</td>
+                <td>@ing.Quantity</td>
+                <td>@ing.Ingredient.measurement.Name</td>
+            </tr>
+        }           
+        </tbody>
+    </table>

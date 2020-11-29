@@ -10,7 +10,7 @@ using RecipeApp.Data_Access.EFcore;
 namespace RecipeApp.Migrations
 {
     [DbContext(typeof(RecipeAppWebApiContext))]
-    [Migration("20201117174855_initial")]
+    [Migration("20201121144122_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -87,20 +87,20 @@ namespace RecipeApp.Migrations
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
 
+                    b.Property<int>("IngredientId")
+                        .HasColumnType("integer");
+
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
 
-                    b.Property<int>("ingredientId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("recipe_typeId")
+                    b.Property<int>("RecipeId")
                         .HasColumnType("integer");
 
                     b.HasKey("id");
 
-                    b.HasIndex("ingredientId");
+                    b.HasIndex("IngredientId");
 
-                    b.HasIndex("recipe_typeId");
+                    b.HasIndex("RecipeId");
 
                     b.ToTable("Recipes_Ingredients");
                 });
@@ -155,21 +155,21 @@ namespace RecipeApp.Migrations
 
             modelBuilder.Entity("RecipeApp.Data_Access.Models.Recipe_Ingredient", b =>
                 {
-                    b.HasOne("RecipeApp.Data_Access.Models.Ingredient", "ingredient")
+                    b.HasOne("RecipeApp.Data_Access.Models.Ingredient", "Ingredient")
                         .WithMany()
-                        .HasForeignKey("ingredientId")
+                        .HasForeignKey("IngredientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RecipeApp.Data_Access.Models.Recipe_Type", "recipe_type")
+                    b.HasOne("RecipeApp.Data_Access.Models.Recipe", "Recipe")
                         .WithMany()
-                        .HasForeignKey("recipe_typeId")
+                        .HasForeignKey("RecipeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ingredient");
+                    b.Navigation("Ingredient");
 
-                    b.Navigation("recipe_type");
+                    b.Navigation("Recipe");
                 });
 
             modelBuilder.Entity("RecipeApp.Data_Access.Models.Recipe_Type", b =>
