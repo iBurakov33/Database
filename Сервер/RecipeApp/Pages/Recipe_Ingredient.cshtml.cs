@@ -23,7 +23,7 @@ namespace RecipeApp.Pages
             _serviceR = dbR;
             _TypeService = dbR_T;
         }
-        public void OnGet(int id)
+        public void OnGet(Guid id)
         {
             //int id = 8;
             //Recipeid = _service.Get(id).

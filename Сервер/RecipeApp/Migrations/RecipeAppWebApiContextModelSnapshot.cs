@@ -21,16 +21,15 @@ namespace RecipeApp.Migrations
 
             modelBuilder.Entity("RecipeApp.Data_Access.Models.Ingredient", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
-                    b.Property<int>("measurementId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("measurementId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("id");
 
@@ -41,10 +40,9 @@ namespace RecipeApp.Migrations
 
             modelBuilder.Entity("RecipeApp.Data_Access.Models.Measurement", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Name")
                         .HasColumnType("text");
@@ -56,10 +54,9 @@ namespace RecipeApp.Migrations
 
             modelBuilder.Entity("RecipeApp.Data_Access.Models.Recipe", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Description")
                         .HasColumnType("text");
@@ -80,19 +77,18 @@ namespace RecipeApp.Migrations
 
             modelBuilder.Entity("RecipeApp.Data_Access.Models.Recipe_Ingredient", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("uuid");
 
-                    b.Property<int>("IngredientId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("IngredientId")
+                        .HasColumnType("uuid");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
 
-                    b.Property<int>("RecipeId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("RecipeId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("id");
 
@@ -105,16 +101,15 @@ namespace RecipeApp.Migrations
 
             modelBuilder.Entity("RecipeApp.Data_Access.Models.Recipe_Type", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("uuid");
 
-                    b.Property<int>("RecipeId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("RecipeId")
+                        .HasColumnType("uuid");
 
-                    b.Property<int>("TypeId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("TypeId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("id");
 
@@ -127,10 +122,9 @@ namespace RecipeApp.Migrations
 
             modelBuilder.Entity("RecipeApp.Data_Access.Models.Type", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Name")
                         .HasColumnType("text");

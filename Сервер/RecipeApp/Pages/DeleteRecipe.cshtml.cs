@@ -18,7 +18,7 @@ namespace RecipeApp.Pages
         {
             _service = db;
         }
-        public void OnGet(int id)
+        public void OnGet(Guid id)
         {
             recipe = _service.Get(id);
             //if (recipe == null)
@@ -27,7 +27,7 @@ namespace RecipeApp.Pages
             //}
             //return Page();
         }
-        public IActionResult OnPost(int id)
+        public IActionResult OnPost(Guid id)
         {
             _service.Delete(id);
 

@@ -18,11 +18,13 @@ namespace RecipeApp.Pages
         {
             _service = db;
         }
-        public void OnGet()
+        public void OnGet(Guid Rid)
         {
+            ingredient.RecipeId = Rid;
         }
         public IActionResult OnPost()
         {
+
             if (ModelState.IsValid)
             {
                 _service.Add(ingredient);//_context.People.Add(Person);

@@ -9,10 +9,10 @@ namespace RecipeApp.Data_Access.Models
 {
     public class Recipe_Type : IEntity
     {
-        public int id { get; set; }
+        public Guid id { get; set; }
         public Recipe recipe { get; set; }
-        public int RecipeId { get; set; }
+        public Guid RecipeId { get; set; }
         public Type type { get; set; }
-        public int TypeId { get; set; }
+        public Guid TypeId { get; set; }
     }
 }

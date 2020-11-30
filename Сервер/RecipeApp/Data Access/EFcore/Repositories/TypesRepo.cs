@@ -20,14 +20,19 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
             _context.Add(entity);
         }
 
-        public void Delete(int id)
+        public void AddDefault(Models.Type entity, Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(Guid id)
         {
             Models.Type entity = _context.Types.Find(id);
             if (entity != null)
                 _context.Types.Remove(entity);
         }
 
-        public Models.Type Get(int id)
+        public Models.Type Get(Guid id)
         {
             return _context.Types.Find(id);
         }

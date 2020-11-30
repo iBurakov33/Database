@@ -8,7 +8,7 @@ namespace RecipeApp.Data_Access.Models
 {
     public class Recipe : IEntity
     {
-        public int id { get; set; }
+        public Guid id { get; set; }
         public string Name { get; set; }
         public TimeSpan MakeTime { get; set; }
         public Uri Image { get; set; }

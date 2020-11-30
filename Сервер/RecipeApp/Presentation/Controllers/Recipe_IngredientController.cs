@@ -28,7 +28,7 @@ namespace RecipeApp.Presentation.Controllers
             return _service.GetAll();
         }
         [HttpGet("One Recipe_Ingredient")]
-        public Recipe_IngredientDTO GetOneRecipe_Ingredient(int id)
+        public Recipe_IngredientDTO GetOneRecipe_Ingredient(Guid id)
         {
             return _service.Get(id);
         }

@@ -4,12 +4,13 @@
     ViewData["Title"] = "Редактирование рецепта";
 }
 <h2>@ViewData["Title"]</h2>
+@{ var recipe = Model.recipe;}
 <div asp-validation-summary="All"></div>
-<input asp-for="recipe.id" type="hidden" />
-<form method="POST">
+@*<input asp-for="recipe.id" type="hidden" />*@
+<form method="POST" asp-route-id="@recipe.id">
     <div>
-        <label>id</label><br /><input asp-for="recipe.id" type="number" />
-        <span asp-validation-for="recipe.id"></span>
+        @*<label>id</label><br /><input asp-for="recipe.id"/>
+        <span asp-validation-for="recipe.id"></span>*@
     </div>
     <div>
         <label>Имя</label><br /><input asp-for="recipe.Name" />

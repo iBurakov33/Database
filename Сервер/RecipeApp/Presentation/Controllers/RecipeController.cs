@@ -22,7 +22,7 @@ namespace RecipeApp.Presentation.Controllers
             _service = service;
         }
         [HttpGet("One_Recipe")]
-        public RecipeDTO GetRecipe(int id)
+        public RecipeDTO GetRecipe(Guid id)
         {
             return _service.Get(id);
         }

@@ -21,7 +21,7 @@ namespace RecipeApp.Presentation.Controllers
             _service = service;
         }
         [HttpGet("One measurement")]
-        public MeasurementDTO GetOneMeasurement(int id)
+        public MeasurementDTO GetOneMeasurement(Guid id)
         {
             return _service.Get(id);
         }

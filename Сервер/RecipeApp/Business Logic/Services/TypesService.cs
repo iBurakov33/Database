@@ -30,12 +30,12 @@ namespace RecipeApp.Business_Logic.Services
             _db.Save();
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
             _db.GetTypeRepo.Delete(id);
         }
 
-        public TypeDTO Get(int id)
+        public TypeDTO Get(Guid id)
         {
             var type = _db.GetTypeRepo.Get(id);
             return _mapper.Map<Data_Access.Models.Type, TypeDTO>(type);

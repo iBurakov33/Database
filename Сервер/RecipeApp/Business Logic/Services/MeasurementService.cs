@@ -31,12 +31,12 @@ namespace RecipeApp.Business_Logic.Services
             _db.Save();
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
             _db.GetMeasurmentRepo.Delete(id);
         }
 
-        public MeasurementDTO Get(int id)
+        public MeasurementDTO Get(Guid id)
         {
             var measurement = _db.GetMeasurmentRepo.Get(id);
             return _mapper.Map<Measurement, MeasurementDTO>(measurement);

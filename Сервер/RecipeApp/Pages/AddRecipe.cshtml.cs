@@ -27,7 +27,8 @@ namespace RecipeApp.Pages
             {
                 _service.Add(recipe);//_context.People.Add(Person);
                 //await _service.;
-                return Redirect("AddType");
+                //return Redirect(Url.Page("/AddType", new { id = recipe.id}));
+                return Redirect("Index");
             }
             return Page();
         }

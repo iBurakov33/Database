@@ -6,7 +6,7 @@
 <h2>@ViewData["Title"]</h2>
 <div asp-validation-summary="All"></div>
 <form method="POST">
-    <div><label>id</label><br /><input asp-for="recipe.id" type="number" /></div>
+    @*<div><label>id</label><br /><input asp-for="recipe.id" type="number" /></div>*@
     <div><label>Имя</label><br /><input asp-for="recipe.Name" /></div>
     <div><label>Время готовки</label><br /><input asp-for="recipe.MakeTime" type="time" /></div>
     <div><label>Изображение</label><br /><input asp-for="recipe.Image" /></div>

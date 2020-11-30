@@ -7,9 +7,9 @@ namespace RecipeApp.Business_Logic.DTO
 {
     public class IngredientDTO
     {
-        public int id { get; set; }
+        public Guid id { get; set; }
         public string Name { get; set; }
         public MeasurementDTO measurement { get; set; }
-        public int measurementId { get; set; }
+        public Guid measurementId { get; set; }
     }
 }

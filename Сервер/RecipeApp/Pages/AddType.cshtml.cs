@@ -19,15 +19,16 @@ namespace RecipeApp.Pages
             _service = db;
         }
 
-        public void OnGet()
+        public void OnGet(Guid Rid)
         {
+            //_service.AddDefault(type, Rid);
         }
-        public IActionResult OnPost()
+        public IActionResult OnPost()//Guid Rid)
         {
             if (ModelState.IsValid)
             {
-                _service.Add(type);//_context.People.Add(Person);
-                //await _service.;
+                //type.RecipeId = Rid;
+                _service.Add(type);
                 return Redirect("Index");
             }
             return Page();

@@ -18,17 +18,23 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
         }
         public void Add(Recipe entity)
         {
+            entity.id = new Guid();
             _context.Add(entity);
         }
 
-        public void Delete(int id)
+        public void AddDefault(Recipe entity, Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(Guid id)
         {
             Recipe entity = _context.Recipes.Find(id);
             if (entity != null)
                 _context.Recipes.Remove(entity);
         }
 
-        public Recipe Get(int id)
+        public Recipe Get(Guid id)
         {
             return _context.Recipes.Find(id);
         }

@@ -7,7 +7,7 @@ namespace RecipeApp.Business_Logic.DTO
 {
     public class RecipeDTO
     {
-        public int id { get; set; }
+        public Guid id { get; set; }
         public string Name { get; set; }
         public TimeSpan MakeTime { get; set; }
         public Uri Image { get; set; }

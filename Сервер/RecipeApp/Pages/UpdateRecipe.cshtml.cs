@@ -18,7 +18,7 @@ namespace RecipeApp.Pages
         {
             service = db;
         }
-        public IActionResult OnGet(int id)
+        public IActionResult OnGet(Guid id)
         {
             recipe = service.Get(id);
             //if (id == null)
@@ -28,13 +28,14 @@ namespace RecipeApp.Pages
 
             return Page();
         }
-        public IActionResult OnPost()
+        public IActionResult OnPost(Guid id)
         {
             
             if (recipe == null)
             {
                 return NotFound();
             }
+            recipe.id = id;
             service.Update(recipe);
             if (!ModelState.IsValid)
             {

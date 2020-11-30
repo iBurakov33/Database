@@ -9,8 +9,8 @@ namespace RecipeApp.Business_Logic.Interfaces
     public interface IMeasurmentService
     {
         void Add(MeasurementDTO entity);
-        void Delete(int id);
-        MeasurementDTO Get(int id);
+        void Delete(Guid id);
+        MeasurementDTO Get(Guid id);
         IEnumerable<MeasurementDTO> GetAll();
         void Update(MeasurementDTO entity);
     }

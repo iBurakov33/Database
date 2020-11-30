@@ -16,19 +16,24 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
         {
             _context = context;
         }
-    public void Add(Measurement entity)
+        public void Add(Measurement entity)
         {
             _context.Add(entity);
         }
 
-        public void Delete(int id)
+        public void AddDefault(Measurement entity, Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(Guid id)
         {
             Measurement entity = _context.Measurments.Find(id);
             if (entity != null)
                 _context.Measurments.Remove(entity);
         }
 
-        public Measurement Get(int id)
+        public Measurement Get(Guid id)
         {
             return _context.Measurments.Find(id);
         }

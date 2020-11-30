@@ -1,0 +1,10 @@
+﻿
+nav ul a, nav .brand-logo {
+	color: white;
+}
+.brand-logo{
+	color:red;
+}
+.navbar_new{
+	font-size:20px;
+}

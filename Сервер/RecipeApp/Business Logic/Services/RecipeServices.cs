@@ -29,7 +29,7 @@ namespace RecipeApp.Business_Logic.Services
             return _mapper.Map<IEnumerable<Recipe>, IEnumerable<RecipeDTO>>(recipes);
         }
                 
-        public RecipeDTO Get(int id)
+        public RecipeDTO Get(Guid id)
         {
             var recipe = _db.GetRecipeRepo.Get(id);
             return _mapper.Map<Recipe, RecipeDTO>(recipe);
@@ -42,7 +42,7 @@ namespace RecipeApp.Business_Logic.Services
             _db.Save();
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
             _db.GetRecipeRepo.Delete(id);
             _db.Save();

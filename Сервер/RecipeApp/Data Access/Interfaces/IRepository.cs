@@ -17,7 +17,7 @@ namespace RecipeApp.Data_Access.Interfaces
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        T Get(int id);
+        T Get(Guid id);
         /// <summary>
         /// Метод добавления сущности в базу данных
         /// </summary>
@@ -32,6 +32,7 @@ namespace RecipeApp.Data_Access.Interfaces
         /// Метод удаления сущности
         /// </summary>
         /// <param name="id"></param>
-        void Delete(int id);
+        void Delete(Guid id);
+        public void AddDefault(T entity, Guid id);
     }
 }

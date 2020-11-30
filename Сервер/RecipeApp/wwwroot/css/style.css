@@ -6,9 +6,8 @@
  * Made By MaterializeCSS.com
  */
 
-nav ul a,
-nav .brand-logo {
-  color: #444;
+nav ul a, nav .brand-logo{
+    color:white;
 }
 
 row {
@@ -58,3 +57,4 @@ p {
 footer.page-footer {
   margin: 0;
 }
+
