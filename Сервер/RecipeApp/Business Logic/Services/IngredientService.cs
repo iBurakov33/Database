@@ -47,6 +47,12 @@ namespace RecipeApp.Business_Logic.Services
             return _mapper.Map<IEnumerable<Ingredient>, IEnumerable<IngredientDTO>>(ingredient);
         }
 
+        public IngredientDTO GetByName(string name)
+        {
+            var ingredient = _db.GetIngredientRepo.GetByName(name);
+            return _mapper.Map<Ingredient, IngredientDTO>(ingredient);
+        }
+
         public void Update(IngredientDTO entity)
         {
             //IngredientDTO entity = _db.GetIngredientRepo.Get(id);

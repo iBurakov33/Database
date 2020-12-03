@@ -31,6 +31,10 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
             if (entity != null)
                 _context.Types.Remove(entity);
         }
+        public Models.Type GetByName(string name)
+        {
+            return _context.Types.Single(type => type.Name == name);
+        }
 
         public Models.Type Get(Guid id)
         {

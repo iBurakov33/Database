@@ -11,6 +11,7 @@ namespace RecipeApp.Business_Logic.Interfaces
         void Add(IngredientDTO entity);
         void Delete(Guid id);
         IngredientDTO Get(Guid id);
+        IngredientDTO GetByName(string name);
         IEnumerable<IngredientDTO> GetAll();
         void Update(IngredientDTO entity);
     }

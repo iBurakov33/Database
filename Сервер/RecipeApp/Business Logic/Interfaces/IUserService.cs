@@ -6,13 +6,12 @@ using RecipeApp.Business_Logic.DTO;
 
 namespace RecipeApp.Business_Logic.Interfaces
 {
-    public interface ITypesService
+    public interface IUserService
     {
-        void Add(TypeDTO entity);
+        void Add(UserDTO entity);
         void Delete(Guid id);
-        TypeDTO Get(Guid id);
-        TypeDTO GetByName(string name);
-        IEnumerable<TypeDTO> GetAll();
-        void Update(TypeDTO entity);
+        UserDTO Get(Guid id);
+        IEnumerable<UserDTO> GetAll();
+        void Update(UserDTO entity);
     }
 }

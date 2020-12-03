@@ -10,7 +10,7 @@ using RecipeApp.Data_Access.EFcore;
 namespace RecipeApp.Migrations
 {
     [DbContext(typeof(RecipeAppWebApiContext))]
-    [Migration("20201129161439_initial")]
+    [Migration("20201202162743_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -134,6 +134,29 @@ namespace RecipeApp.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Types");
+                });
+
+            modelBuilder.Entity("RecipeApp.Data_Access.Models.User", b =>
+                {
+                    b.Property<Guid>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<bool>("AdminRole")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Login")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("text");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("RecipeApp.Data_Access.Models.Ingredient", b =>

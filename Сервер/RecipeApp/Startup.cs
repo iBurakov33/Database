@@ -20,6 +20,7 @@ using RecipeApp.Data_Access.Models;
 using RecipeApp.Business_Logic.Interfaces;
 using RecipeApp.Business_Logic.Services;
 using RecipeApp.Pages;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace RecipeApp
 {
@@ -35,7 +36,10 @@ namespace RecipeApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc().AddRazorPagesOptions(options =>
+            {
+                options.Conventions.AllowAnonymousToPage("/Index");
+            });
             services.AddControllers();
 
             
@@ -44,6 +48,12 @@ namespace RecipeApp
             
             services.AddEntityFrameworkNpgsql().AddDbContext<RecipeApp.Data_Access.EFcore.RecipeAppWebApiContext>(optionsAction: opt =>
             opt.UseNpgsql(Configuration.GetConnectionString(name: "RecipeAppWebApiContext")));
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options => //CookieAuthenticationOptions
+                {
+                    options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+                });
 
             var mappingConfig = new MapperConfiguration(mc =>
             {
@@ -54,8 +64,11 @@ namespace RecipeApp
 
             services.AddScoped<IRepository<Recipe>, RecipeRep>();
             services.AddScoped<IRepository<Recipe_Ingredient>, Recipe_IngredientRepo>();
+            services.AddScoped<IRepository<Recipe_Type>, Recipe_TypesRepo>();
             services.AddScoped<IRepository<Ingredient>, IngredientRepo>();
             services.AddScoped<IRepository<RecipeApp.Data_Access.Models.Type>, TypesRepo>();
+            services.AddScoped<IRepository<User>, UsersRepo>();
+            services.AddScoped<IRepository<Measurement>, MeasurementRepo>();
 
             services.AddScoped<IUnitOfWork, EFUnitOfwork>();
 
@@ -65,6 +78,7 @@ namespace RecipeApp
             services.AddScoped<IIngredientService, IngredientService>();
             services.AddScoped<IRecipe_TypeService, Recipe_TypeService>();
             services.AddScoped<IRecipe_IngredientService, Recipe_IngredientService>();
+            services.AddScoped<IUserService, UserService>();
 
 
         }

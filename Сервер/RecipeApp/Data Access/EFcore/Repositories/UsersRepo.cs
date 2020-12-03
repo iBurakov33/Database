@@ -6,49 +6,51 @@ using Microsoft.EntityFrameworkCore;
 using RecipeApp.Data_Access.Interfaces;
 using RecipeApp.Data_Access.Models;
 
-
 namespace RecipeApp.Data_Access.EFcore.Repositories
 {
-    public class MeasurementRepo : IRepository<Measurement>
+    public class UsersRepo : IRepository<User>
     {
         private readonly RecipeAppWebApiContext _context;
-        public MeasurementRepo(RecipeAppWebApiContext context)
+        public UsersRepo(RecipeAppWebApiContext context)
         {
             _context = context;
         }
-        public void Add(Measurement entity)
+        public void Add(User entity)
         {
+            entity.id = new Guid();
+            entity.AdminRole = false;
             _context.Add(entity);
         }
 
-        public void AddDefault(Measurement entity, Guid id)
+        public void AddDefault(User entity, Guid id)
         {
             throw new NotImplementedException();
         }
 
         public void Delete(Guid id)
         {
-            Measurement entity = _context.Measurments.Find(id);
+            User entity = _context.Users.Find(id);
             if (entity != null)
-                _context.Measurments.Remove(entity);
+                _context.Users.Remove(entity);
         }
 
-        public Measurement Get(Guid id)
+        public User Get(Guid id)
         {
-            return _context.Measurments.Find(id);
+            var user = _context.Users.Single(amount => amount.id == id);
+            return user;
         }
 
-        public IEnumerable<Measurement> GetAll()
+        public IEnumerable<User> GetAll()
         {
-            return _context.Measurments;
+            return _context.Users;
         }
 
-        public Measurement GetByName(string name)
+        public User GetByName(string name)
         {
-            return _context.Measurments.Find(name);
+            throw new NotImplementedException();
         }
 
-        public void Update(Measurement entity)
+        public void Update(User entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
         }

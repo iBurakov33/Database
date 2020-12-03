@@ -9,27 +9,36 @@ using RecipeApp.Business_Logic.Interfaces;
 
 namespace RecipeApp.Pages
 {
+    [BindProperties]
     public class AddTypeModel : PageModel
     {
         private readonly IRecipe_TypeService _service;
-        [BindProperty]
+        private readonly IRecipeService _recipeService;
+        private readonly ITypesService _typesService;
         public Recipe_TypeDTO type { get; set; }
-        public AddTypeModel(IRecipe_TypeService db)
+        public RecipeDTO recipe { get; set; }
+        public TypeDTO typeMain { get; set; }
+        public string typeName { get; set; }
+        public AddTypeModel(IRecipe_TypeService db, IRecipeService dbR, ITypesService dbT)
         {
             _service = db;
+            _recipeService = dbR;
+            _typesService = dbT;
         }
 
-        public void OnGet(Guid Rid)
+        public void OnGet(Guid id)
         {
-            //_service.AddDefault(type, Rid);
+            recipe = _recipeService.Get(id);
         }
-        public IActionResult OnPost()//Guid Rid)
+        public IActionResult OnPost()
         {
             if (ModelState.IsValid)
             {
-                //type.RecipeId = Rid;
+                type.RecipeId = recipe.id;
+                typeMain = _typesService.GetByName(typeName);
+                type.TypeId = typeMain.id;
                 _service.Add(type);
-                return Redirect("Index");
+                return RedirectToPage("Index");
             }
             return Page();
         }

@@ -11,7 +11,6 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
     public class RecipeRep : IRepository<Recipe>
     {
         private readonly RecipeAppWebApiContext _context;
-
         public RecipeRep(RecipeAppWebApiContext context)
         {
             _context = context;
@@ -42,6 +41,11 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
         public IEnumerable<Recipe> GetAll()
         {
             return _context.Recipes;
+        }
+
+        public Recipe GetByName(string name)
+        {
+            throw new NotImplementedException();
         }
 
         public void Update(Recipe entity)

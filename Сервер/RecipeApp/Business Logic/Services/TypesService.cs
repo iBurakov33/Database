@@ -47,6 +47,12 @@ namespace RecipeApp.Business_Logic.Services
             return _mapper.Map<IEnumerable<Data_Access.Models.Type>, IEnumerable<TypeDTO>>(type);
         }
 
+        public TypeDTO GetByName(string name)
+        {
+            var type = _db.GetTypeRepo.GetByName(name);
+            return _mapper.Map<Data_Access.Models.Type, TypeDTO>(type);
+        }
+
         public void Update(TypeDTO entity)
         {
             //

@@ -1,0 +1,16 @@
+﻿@page
+@model RecipeApp.Pages.RegisterModel
+@{
+    ViewData["Title"] = "Регистрация";
+}
+<a asp-action="Register" asp-anti-forgery="true">Регистрация</a>
+
+<h2>@ViewData["Title"]</h2>
+<div asp-validation-summary="All"></div>
+<form method="POST">
+    @*<div><label>id</label><br /><input asp-for="recipe.id" type="number" /></div>*@
+    <div><label>Логин</label><br /><input asp-for="user.Login" /></div>
+    <div><label>Email</label><br /><input asp-for="user.Email" /></div>
+    <div><label>Пароль</label><br /><input asp-for="user.Password" /></div>
+    <input type="submit" value="Отправить" />
+</form>

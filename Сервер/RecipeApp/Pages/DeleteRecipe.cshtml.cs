@@ -21,11 +21,6 @@ namespace RecipeApp.Pages
         public void OnGet(Guid id)
         {
             recipe = _service.Get(id);
-            //if (recipe == null)
-            //{
-            //    return NotFound();
-            //}
-            //return Page();
         }
         public IActionResult OnPost(Guid id)
         {

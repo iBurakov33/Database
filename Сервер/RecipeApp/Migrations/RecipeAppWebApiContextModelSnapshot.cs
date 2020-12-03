@@ -134,6 +134,29 @@ namespace RecipeApp.Migrations
                     b.ToTable("Types");
                 });
 
+            modelBuilder.Entity("RecipeApp.Data_Access.Models.User", b =>
+                {
+                    b.Property<Guid>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<bool>("AdminRole")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Login")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("text");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("RecipeApp.Data_Access.Models.Ingredient", b =>
                 {
                     b.HasOne("RecipeApp.Data_Access.Models.Measurement", "measurement")

@@ -52,6 +52,11 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
                 .Include(measurement => measurement.Ingredient.measurement);
         }
 
+        public Recipe_Ingredient GetByName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(Recipe_Ingredient entity)
         {
             //Recipe_Ingredient entity = _context.Recipes_Ingredients.Find(id);

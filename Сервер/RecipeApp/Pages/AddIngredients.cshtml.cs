@@ -9,26 +9,35 @@ using RecipeApp.Business_Logic.Interfaces;
 
 namespace RecipeApp.Pages
 {
+    [BindProperties]
     public class AddIngredientsModel : PageModel
     {
         private readonly IRecipe_IngredientService _service;
-        [BindProperty]
+        private readonly IRecipeService _recipeService;
+        private readonly IIngredientService _ingredientService;
+        public RecipeDTO recipe { get; set; }
+        public Guid RecipeId { get; set; }
         public Recipe_IngredientDTO ingredient { get; set; }
-        public AddIngredientsModel(IRecipe_IngredientService db)
+        public IngredientDTO ingredientMain { get; set; }
+        public string ingredientName { get; set; }
+        public AddIngredientsModel(IRecipe_IngredientService db, IRecipeService recipeDb, IIngredientService ingredientDb)
         {
             _service = db;
+            _recipeService = recipeDb;
+            _ingredientService = ingredientDb;
         }
-        public void OnGet(Guid Rid)
+        public void OnGet(Guid id)
         {
-            ingredient.RecipeId = Rid;
+            recipe = _recipeService.Get(id);
         }
         public IActionResult OnPost()
         {
-
             if (ModelState.IsValid)
             {
-                _service.Add(ingredient);//_context.People.Add(Person);
-                //await _service.;
+                ingredient.RecipeId = recipe.id;
+                ingredientMain = _ingredientService.GetByName(ingredientName);
+                ingredient.IngredientId = ingredientMain.id;
+                _service.Add(ingredient);
                 return Redirect("Index");
             }
             return Page();

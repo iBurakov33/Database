@@ -23,9 +23,7 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
 
         public void AddDefault(Recipe_Type entity, Guid id)
         {
-            entity.id = new Guid();
-            entity.RecipeId = id;
-            entity.TypeId = Guid.Parse("c064d010-331b-11eb-adc1-0242ac120002");
+            entity = new Recipe_Type { id = new Guid() , RecipeId = id, TypeId = Guid.Parse("c064d010-331b-11eb-adc1-0242ac120002")};
             _context.Add(entity);
         }
 
@@ -50,6 +48,11 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
             return _context.Recipes_Types
                 .Include(recipe => recipe.recipe)
                 .Include(type => type.type);
+        }
+
+        public Recipe_Type GetByName(string name)
+        {
+            throw new NotImplementedException();
         }
 
         public void Update(Recipe_Type entity)
