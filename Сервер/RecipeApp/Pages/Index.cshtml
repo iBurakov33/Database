@@ -2,9 +2,19 @@
 @model RecipeApp.Pages.IndexModel
 @{
     ViewData["Title"] = "Список рецептов";
+    var login = Model._login;
 }
 <h2>@ViewData["Title"]</h2>
+
 <p><a asp-page="AddRecipe">Добавить рецепт</a></p>
+@foreach (var type in Model.types)
+{
+<p>
+    Показать рецепты по типам:
+    <a href=@Url.Page("/Recipe", new { name = type.Name})>@type.Name</a>
+</p>
+    
+}
 
 @foreach (var recipe in Model.recipes)
 {

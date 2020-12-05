@@ -5,15 +5,39 @@
     ViewData["Title"] = "Список рецептов";
 }
 <h2>@ViewData["Title"]</h2>
+<p><a asp-page="AddRecipe">Добавить рецепт</a></p>
 
-<table class="table">
-    <thead>
-        <tr><th>id</th><th>Name</th><th>Make Time</th><th>Description</th></tr>
-    </thead>
-    <tbody>
-        @foreach (var recipe in Model.recipes)
-        {
-            <tr><td>@recipe.id</td><td>@recipe.Name</td><td>@recipe.MakeTime</td><td>@recipe.Description</td></tr>
-        }
-    </tbody>
-</table>
+Показать рецепты по типам:
+@foreach (var type in Model.types)
+{
+    <p>
+        <a href=@Url.Page("/Recipe", new { name = type.Name})>@type.Name</a>
+    </p>
+
+}
+
+@foreach (var recipe in Model.recipes)
+{
+    <div class="col l4 s12 m7">
+        <div class="card">
+            <div class="card-image">
+                <img src=@recipe.recipe.Image>
+                <span class="card-title">@recipe.recipe.Name</span>
+            </div>
+            <div class="card-content">
+                <p>
+                    @recipe.recipe.Description
+                </p>
+            </div>
+            <div class="card-action">
+                <a href=@Url.Page("/Recipe_ingredient", new { id = recipe.id })>Подробное описание рецепта</a>
+            </div>
+            <div class="card-action">
+                <a href=@Url.Page("/UpdateRecipe", new { id = recipe.id})>Редактировать рецепт</a>
+            </div>
+            <div class="card-action">
+                <a href=@Url.Page("/DeleteRecipe", new { id = recipe.id})>Удалить рецепт</a>
+            </div>
+        </div>
+    </div>
+}

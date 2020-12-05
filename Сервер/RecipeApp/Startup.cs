@@ -52,7 +52,7 @@ namespace RecipeApp
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options => //CookieAuthenticationOptions
                 {
-                    options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+                    options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Login");
                 });
 
             var mappingConfig = new MapperConfiguration(mc =>
@@ -67,7 +67,7 @@ namespace RecipeApp
             services.AddScoped<IRepository<Recipe_Type>, Recipe_TypesRepo>();
             services.AddScoped<IRepository<Ingredient>, IngredientRepo>();
             services.AddScoped<IRepository<RecipeApp.Data_Access.Models.Type>, TypesRepo>();
-            services.AddScoped<IRepository<User>, UsersRepo>();
+            services.AddScoped<IUserRepository, UsersRepo>();
             services.AddScoped<IRepository<Measurement>, MeasurementRepo>();
 
             services.AddScoped<IUnitOfWork, EFUnitOfwork>();

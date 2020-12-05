@@ -17,7 +17,7 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
         private IRepository<Recipe_Ingredient> _recipe_ingredientRepo;
         private IRepository<Recipe_Type> _recipe_typeRepo;
         private IRepository<Measurement> _measurementRepo;
-        private IRepository<User> _userRepo;
+        private IUserRepository _userRepo;
         
         public EFUnitOfwork(RecipeAppWebApiContext context)
         {
@@ -81,7 +81,7 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
             }
         }
 
-        public IRepository<User> GetUsersRepo
+        public IUserRepository GetUsersRepo
         {
             get
             {

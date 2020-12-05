@@ -23,6 +23,11 @@ namespace RecipeApp.Business_Logic.Services
             _db = entity;
             _mapper = mapper;
         }
+        public UserDTO GetUser(string login, string password)
+        {
+            var user = _db.GetUsersRepo.GetUser(login, password);
+            return _mapper.Map<User, UserDTO>(user);
+        }
         public void Add(UserDTO entity)
         {
             User user = _mapper.Map<User>(entity);

@@ -8,7 +8,7 @@ using RecipeApp.Data_Access.Models;
 
 namespace RecipeApp.Data_Access.EFcore.Repositories
 {
-    public class UsersRepo : IRepository<User>
+    public class UsersRepo : IUserRepository
     {
         private readonly RecipeAppWebApiContext _context;
         public UsersRepo(RecipeAppWebApiContext context)
@@ -40,14 +40,29 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
             return user;
         }
 
+        public User GetUser(string login, string password)
+        {
+            //try
+            //{
+
+            //}
+            //catch (Exception)
+            //{
+
+            //    throw;
+            //}
+
+            //if ()
+            //{
+
+            //}
+            var user = _context.Users.Single(user => user.Login == login && user.Password == password);
+            return user;
+        }
+
         public IEnumerable<User> GetAll()
         {
             return _context.Users;
-        }
-
-        public User GetByName(string name)
-        {
-            throw new NotImplementedException();
         }
 
         public void Update(User entity)

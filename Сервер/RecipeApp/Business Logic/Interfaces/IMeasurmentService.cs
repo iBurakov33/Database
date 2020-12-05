@@ -11,6 +11,7 @@ namespace RecipeApp.Business_Logic.Interfaces
         void Add(MeasurementDTO entity);
         void Delete(Guid id);
         MeasurementDTO Get(Guid id);
+        MeasurementDTO GetByName(string name);
         IEnumerable<MeasurementDTO> GetAll();
         void Update(MeasurementDTO entity);
     }

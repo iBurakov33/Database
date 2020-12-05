@@ -48,6 +48,12 @@ namespace RecipeApp.Business_Logic.Services
             return _mapper.Map<IEnumerable<Measurement>, IEnumerable<MeasurementDTO>>(measurement);
         }
 
+        public MeasurementDTO GetByName(string name)
+        {
+            var measurement = _db.GetMeasurmentRepo.GetByName(name);
+            return _mapper.Map<Measurement, MeasurementDTO>(measurement);
+        }
+
         public void Update(MeasurementDTO entity)
         {
             //

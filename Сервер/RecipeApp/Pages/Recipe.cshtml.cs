@@ -8,17 +8,22 @@ using RecipeApp.Business_Logic.DTO;
 using RecipeApp.Business_Logic.Interfaces;
 namespace RecipeApp.Pages
 {
-    public class RecipeModel : PageModel
+    [BindProperties]
+    public class RecipeModel : BaseLayoutPageModel
     {
-        private readonly IRecipeService _service;
-        public IEnumerable<RecipeDTO> recipes { get; set; }
-        public RecipeModel(IRecipeService db)
+        private readonly IRecipe_TypeService _service;
+        private readonly ITypesService _typesService;
+        public IEnumerable<Recipe_TypeDTO> recipes { get; set; }
+        public IEnumerable<TypeDTO> types { get; set; }
+        public RecipeModel(IRecipe_TypeService db, ITypesService dbT)
         {
             _service = db;
+            _typesService = dbT;
         }
-        public void OnGet()
+        public void OnGet(string name)
         {
-            recipes = _service.GetAll();
+            recipes = _service.GetAll().Where(recipes => recipes.type.Name == name);
+            types = _typesService.GetAll();
         }
     }
 }

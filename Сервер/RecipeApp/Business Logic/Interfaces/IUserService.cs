@@ -13,5 +13,6 @@ namespace RecipeApp.Business_Logic.Interfaces
         UserDTO Get(Guid id);
         IEnumerable<UserDTO> GetAll();
         void Update(UserDTO entity);
+        UserDTO GetUser(string login, string password);
     }
 }

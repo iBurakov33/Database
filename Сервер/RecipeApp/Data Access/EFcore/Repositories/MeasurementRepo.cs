@@ -45,7 +45,7 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
 
         public Measurement GetByName(string name)
         {
-            return _context.Measurments.Find(name);
+            return _context.Measurments.Single(measurement => measurement.Name == name);
         }
 
         public void Update(Measurement entity)
