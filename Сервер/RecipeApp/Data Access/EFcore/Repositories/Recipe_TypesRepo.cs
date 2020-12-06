@@ -50,6 +50,11 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
                 .Include(type => type.type);
         }
 
+        public IEnumerable<Recipe_Type> GetAllByName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
         public Recipe_Type GetByName(string name)
         {
             throw new NotImplementedException();

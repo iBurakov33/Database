@@ -18,6 +18,7 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
         private IRepository<Recipe_Type> _recipe_typeRepo;
         private IRepository<Measurement> _measurementRepo;
         private IUserRepository _userRepo;
+        private IRepository<FavouriteRecipes> _favouriteRecipesRepo;
         
         public EFUnitOfwork(RecipeAppWebApiContext context)
         {
@@ -91,6 +92,15 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
             }
         }
 
+        public IRepository<FavouriteRecipes> GetFavouriteRecipesRepo
+        {
+            get
+            {
+                if (_favouriteRecipesRepo == null)
+                    _favouriteRecipesRepo = new FavouriteRecipesRepo(_db);
+                return _favouriteRecipesRepo;
+            }
+        }
         public void Save()
         {
             _db.SaveChanges();

@@ -69,5 +69,11 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
         {
             _context.Entry(entity).State = EntityState.Modified;
         }
+
+        public User GetByLogin(string login)
+        {
+            var user = _context.Users.Single(amount => amount.Login == login);
+            return user;
+        }
     }
 }

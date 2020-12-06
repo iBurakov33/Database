@@ -17,6 +17,7 @@ namespace RecipeApp.Business_Logic.Services
     {
         private readonly IUnitOfWork _db;
         private readonly IMapper _mapper;
+        public string SingedInUser { get; set; }
 
         public UserService(IUnitOfWork entity, IMapper mapper)
         {
@@ -57,6 +58,22 @@ namespace RecipeApp.Business_Logic.Services
             User user = _mapper.Map<User>(entity);
             _db.GetUsersRepo.Update(user);
             _db.Save();
+        }
+
+        public void SingIn(string login)
+        {
+            SingedInUser = login;
+        }
+
+        public void SingOff()
+        {
+            SingedInUser = null;
+        }
+
+        public UserDTO GetByLogin(string login)
+        {
+            var user = _db.GetUsersRepo.GetByLogin(login);
+            return _mapper.Map<User, UserDTO>(user);
         }
     }
 }

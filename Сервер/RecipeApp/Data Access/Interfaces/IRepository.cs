@@ -10,6 +10,7 @@ namespace RecipeApp.Data_Access.Interfaces
         IEnumerable<T> GetAll();
         T Get(Guid id);
         T GetByName(string name);
+        public IEnumerable<T> GetAllByName(string name);
         void Add(T entity);
         void Update(T entity);
         void Delete(Guid id);

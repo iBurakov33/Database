@@ -17,7 +17,7 @@ namespace RecipeApp.Pages
     [ValidateAntiForgeryToken]
     [AllowAnonymous]
     [BindProperties]
-    public class LoginModel : BaseLayoutPageModel
+    public class LoginModel : PageModel
     {
         private readonly IUserService _service;
         public string login { get; set; }
@@ -34,10 +34,10 @@ namespace RecipeApp.Pages
         {
             if (ModelState.IsValid)
             {
-                //_service.Add(user);
                 user = _service.GetUser(login, password);
                 await Authenticate(user.Email);
-                return Redirect(Url.Page("/Index", new { login = user.Login})) ;//Content(User.Identity.Name); //
+                _service.SingIn(user.Login);
+                return Redirect(Url.Page("/Index", new { login = user.Login}));
             }
             return Page();
         }

@@ -1,5 +1,4 @@
-﻿@model RecipeApp.Pages.BaseLayoutPageModel;
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -24,7 +23,7 @@
         font-family: 'Lobster', cursive; font-size: 50px;"> <img src="css/baker.svg" width="40" height="40" color="red" alt="image description">Кулинар</a>
             <ul class="right hide-on-med-and-down navbar_new" style=" font-size: 20px;">
                 <li><a href="@Url.Page("/Index")">Главная</a></li>
-                <li><a></a></li>
+                <li><a href="@Url.Page("/FavouriteRecipes")">Любимые рецепты</a></li>
                 <li><a href="@Url.Page("/Login")">Вход</a></li>
                 <li><a href="@Url.Page("/Register")">Регистрация</a></li>
             </ul>

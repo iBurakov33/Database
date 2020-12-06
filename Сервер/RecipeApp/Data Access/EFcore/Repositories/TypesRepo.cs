@@ -51,5 +51,10 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
             //Models.Type entity = _context.Types.Find(id);
             _context.Entry(entity).State = EntityState.Modified;
         }
+
+        public IEnumerable<Models.Type> GetAllByName(string name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

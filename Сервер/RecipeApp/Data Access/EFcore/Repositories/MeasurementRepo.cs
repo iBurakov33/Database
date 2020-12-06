@@ -43,6 +43,11 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
             return _context.Measurments;
         }
 
+        public IEnumerable<Measurement> GetAllByName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
         public Measurement GetByName(string name)
         {
             return _context.Measurments.Single(measurement => measurement.Name == name);

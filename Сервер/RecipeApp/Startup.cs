@@ -69,6 +69,7 @@ namespace RecipeApp
             services.AddScoped<IRepository<RecipeApp.Data_Access.Models.Type>, TypesRepo>();
             services.AddScoped<IUserRepository, UsersRepo>();
             services.AddScoped<IRepository<Measurement>, MeasurementRepo>();
+            services.AddScoped<IRepository<FavouriteRecipes>, FavouriteRecipesRepo>();
 
             services.AddScoped<IUnitOfWork, EFUnitOfwork>();
 
@@ -79,6 +80,7 @@ namespace RecipeApp
             services.AddScoped<IRecipe_TypeService, Recipe_TypeService>();
             services.AddScoped<IRecipe_IngredientService, Recipe_IngredientService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IFavouriteRecipesService, FavouriteRecipesService>();
 
 
         }

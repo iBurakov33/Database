@@ -11,6 +11,7 @@ namespace RecipeApp.Data_Access.Interfaces
         IEnumerable<User> GetAll();
         User Get(Guid id);
         User GetUser(string login, string password);
+        User GetByLogin(string login);
         void Add(User entity);
         void Update(User entity);
         void Delete(Guid id);

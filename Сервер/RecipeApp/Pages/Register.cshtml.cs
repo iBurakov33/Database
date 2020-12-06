@@ -16,7 +16,7 @@ namespace RecipeApp.Pages
 {
     [ValidateAntiForgeryToken]
     [AllowAnonymous]
-    public class RegisterModel : BaseLayoutPageModel
+    public class RegisterModel : PageModel
     {
         private readonly IUserService _service;
         [BindProperty]

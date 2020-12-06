@@ -55,7 +55,6 @@ namespace RecipeApp.Business_Logic.Services
 
         public void Update(IngredientDTO entity)
         {
-            //IngredientDTO entity = _db.GetIngredientRepo.Get(id);
             Ingredient ingredient = _mapper.Map<Ingredient>(entity);
             _db.GetIngredientRepo.Update(ingredient);
             _db.Save();

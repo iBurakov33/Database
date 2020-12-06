@@ -2,11 +2,41 @@
 @model RecipeApp.Pages.IndexModel
 @{
     ViewData["Title"] = "Список рецептов";
-    var login = Model._login;
+    string _login;
+    if (Model.user == null)
+    {
+        _login = "";
+    }
+    else
+    {
+        _login = Model.user.Login;
+    }
+
 }
 <h2>@ViewData["Title"]</h2>
 
-<p><a asp-page="AddRecipe">Добавить рецепт</a></p>
+<nav class="black" role="navigation">
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="#" class="brand-logo" style="        color: red;
+        font-family: 'Lobster', cursive; font-size: 50px;"> <img src="css/baker.svg" width="40" height="40" color="red" alt="image description">Кулинар</a>
+        <ul class="right hide-on-med-and-down navbar_new" style=" font-size: 20px;">
+            @{
+                if (Model.user != null)
+                {
+                    if (Model.user.AdminRole)
+                    {
+                        <li><a href="@Url.Page("/AddRecipe")">Добавить рецепт</a></li>
+                    }
+                }
+
+            }
+            <li><a href="@Url.Page("/Index")">Главная</a></li>
+            <li><a href="@Url.Page("/FavouriteRecipes", new { login = _login})">Любимые рецепты</a></li>
+            <li><a href="@Url.Page("/Login")">Вход</a></li>
+            <li><a href="@Url.Page("/Register")">Регистрация</a></li>
+        </ul>
+    </div>
+</nav>
 @foreach (var type in Model.types)
 {
 <p>
@@ -32,11 +62,24 @@
             <div class="card-action">
                 <a href=@Url.Page("/Recipe_ingredient", new { id = recipe.id })>Подробное описание рецепта</a>
             </div>
+            @{
+                if (Model.user != null)
+                {
+                    if (Model.user.AdminRole)
+                    {
+                        <div class="card-action">
+                            <a href=@Url.Page("/UpdateRecipe", new { id = recipe.id})>Редактировать рецепт</a>
+                        </div>
+                        <div class="card-action">
+                            <a href=@Url.Page("/DeleteRecipe", new { id = recipe.id})>Удалить рецепт</a>
+                        </div>
+                    }
+                }
+
+            }
+
             <div class="card-action">
-                <a href=@Url.Page("/UpdateRecipe", new { id = recipe.id})>Редактировать рецепт</a>
-            </div>
-            <div class="card-action">
-                <a href=@Url.Page("/DeleteRecipe", new { id = recipe.id})>Удалить рецепт</a>
+                <a href=@Url.Page("/AddToFavorite", new {  user = _login, id = recipe.id})>Добавить рецепт в любимый</a>
             </div>
         </div>
     </div>

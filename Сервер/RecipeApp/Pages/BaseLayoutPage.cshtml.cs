@@ -9,5 +9,6 @@ namespace RecipeApp.Pages
 {
     public abstract class BaseLayoutPageModel : PageModel
     {
+        public string SingedInUser { get; set; }
     }
 }

@@ -9,7 +9,7 @@ using RecipeApp.Business_Logic.Interfaces;
 namespace RecipeApp.Pages
 {
     [BindProperties]
-    public class RecipeModel : BaseLayoutPageModel
+    public class RecipeModel : PageModel
     {
         private readonly IRecipe_TypeService _service;
         private readonly ITypesService _typesService;

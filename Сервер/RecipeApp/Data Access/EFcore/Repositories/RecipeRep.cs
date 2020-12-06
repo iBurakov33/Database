@@ -43,6 +43,11 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
             return _context.Recipes;
         }
 
+        public IEnumerable<Recipe> GetAllByName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
         public Recipe GetByName(string name)
         {
             throw new NotImplementedException();

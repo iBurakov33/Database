@@ -47,6 +47,11 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
                 .Include(measurement => measurement.measurement);
         }
 
+        public IEnumerable<Ingredient> GetAllByName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
         public Ingredient GetByName(string name)
         {
             return _context.Ingredients.Single(ing => ing.Name == name);

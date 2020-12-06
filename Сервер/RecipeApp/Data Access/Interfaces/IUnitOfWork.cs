@@ -15,6 +15,7 @@ namespace RecipeApp.Data_Access.Interfaces
         IRepository<Recipe_Type> GetRecipe_TypeRepo { get; }
         IRepository<Measurement> GetMeasurmentRepo { get; }
         IUserRepository GetUsersRepo { get; }
+        IRepository<FavouriteRecipes> GetFavouriteRecipesRepo { get; }
         void Save();
     }
 }

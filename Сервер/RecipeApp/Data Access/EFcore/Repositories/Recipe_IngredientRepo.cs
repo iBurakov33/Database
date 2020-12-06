@@ -52,6 +52,11 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
                 .Include(measurement => measurement.Ingredient.measurement);
         }
 
+        public IEnumerable<Recipe_Ingredient> GetAllByName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
         public Recipe_Ingredient GetByName(string name)
         {
             throw new NotImplementedException();

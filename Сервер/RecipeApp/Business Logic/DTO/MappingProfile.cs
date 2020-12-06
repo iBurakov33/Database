@@ -19,6 +19,7 @@ namespace RecipeApp.Business_Logic.DTO
             CreateMap<Recipe_Type, Recipe_TypeDTO>();
             CreateMap<Measurement, MeasurementDTO>();
             CreateMap<User, UserDTO>();
+            CreateMap<FavouriteRecipes, FavouriteRecipesDTO>();
 
             CreateMap<Data_Access.Models.Type, TypeDTO>().ReverseMap();
             CreateMap<Ingredient, IngredientDTO>().ReverseMap();
@@ -27,6 +28,7 @@ namespace RecipeApp.Business_Logic.DTO
             CreateMap<Recipe_Type, Recipe_TypeDTO>().ReverseMap();
             CreateMap<Measurement, MeasurementDTO>().ReverseMap();
             CreateMap<User, UserDTO>().ReverseMap();
+            CreateMap<FavouriteRecipes, FavouriteRecipesDTO>().ReverseMap();
 
         }
     }
