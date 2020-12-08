@@ -16,9 +16,7 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
         private IRepository<Models.Type> _typesRepo;
         private IRepository<Recipe_Ingredient> _recipe_ingredientRepo;
         private IRepository<Recipe_Type> _recipe_typeRepo;
-        private IRepository<Measurement> _measurementRepo;
         private IUserRepository _userRepo;
-        private IRepository<FavouriteRecipes> _favouriteRecipesRepo;
         
         public EFUnitOfwork(RecipeAppWebApiContext context)
         {
@@ -72,16 +70,6 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
             }
         }
 
-        public IRepository<Measurement> GetMeasurmentRepo
-        {
-            get
-            {
-                if (_measurementRepo == null)
-                    _measurementRepo = new MeasurementRepo(_db);
-                return _measurementRepo;
-            }
-        }
-
         public IUserRepository GetUsersRepo
         {
             get
@@ -89,16 +77,6 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
                 if (_userRepo == null)
                     _userRepo = new UsersRepo(_db);
                 return _userRepo;
-            }
-        }
-
-        public IRepository<FavouriteRecipes> GetFavouriteRecipesRepo
-        {
-            get
-            {
-                if (_favouriteRecipesRepo == null)
-                    _favouriteRecipesRepo = new FavouriteRecipesRepo(_db);
-                return _favouriteRecipesRepo;
             }
         }
         public void Save()

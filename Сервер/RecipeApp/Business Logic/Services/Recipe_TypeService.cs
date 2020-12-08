@@ -37,7 +37,6 @@ namespace RecipeApp.Business_Logic.Services
 
         public void Update(Recipe_TypeDTO entity)
         {
-            //
             Recipe_Type recipe_Type = _mapper.Map<Recipe_Type>(entity);
             _db.GetRecipe_TypeRepo.Update(recipe_Type);
             _db.Save();
@@ -51,15 +50,14 @@ namespace RecipeApp.Business_Logic.Services
 
         public IEnumerable<Recipe_TypeDTO> GetAll()
         {
-            var recipe_type = _db.GetRecipe_TypeRepo.GetAll().OrderByDescending(recipe_type => recipe_type.recipe.MakeTime);
+            var recipe_type = _db.GetRecipe_TypeRepo.GetAll();
             return _mapper.Map<IEnumerable<Recipe_Type>, IEnumerable<Recipe_TypeDTO>>(recipe_type);
         }
 
-        public void AddDefault(Recipe_TypeDTO entity, Guid id)
+        public Recipe_TypeDTO GetByName(string name)
         {
-            Recipe_Type recipe_Type = _mapper.Map<Recipe_Type>(entity);
-            _db.GetRecipe_TypeRepo.AddDefault(recipe_Type, id);
-            _db.Save();
+            var recipe_type = _db.GetRecipe_TypeRepo.GetByName(name);
+            return _mapper.Map<Recipe_Type, Recipe_TypeDTO>(recipe_type);
         }
     }
 }

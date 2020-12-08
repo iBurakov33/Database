@@ -13,6 +13,6 @@ namespace RecipeApp.Business_Logic.DTO
         public Guid RecipeId { get; set; }
         public IngredientDTO Ingredient { get; set; }
         public Guid IngredientId { get; set; }
-        public int Quantity { get; set; }
+        public string Quantity { get; set; }
     }
 }

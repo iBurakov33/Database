@@ -31,7 +31,6 @@
 
             }
             <li><a href="@Url.Page("/Index")">Главная</a></li>
-            <li><a href="@Url.Page("/FavouriteRecipes", new { login = _login})">Любимые рецепты</a></li>
             <li><a href="@Url.Page("/Login")">Вход</a></li>
             <li><a href="@Url.Page("/Register")">Регистрация</a></li>
         </ul>
@@ -77,10 +76,6 @@
                 }
 
             }
-
-            <div class="card-action">
-                <a href=@Url.Page("/AddToFavorite", new {  user = _login, id = recipe.id})>Добавить рецепт в любимый</a>
-            </div>
         </div>
     </div>
 }

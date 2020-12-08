@@ -8,7 +8,7 @@ namespace RecipeApp.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Measurments",
+                name: "Ingredients",
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -16,7 +16,7 @@ namespace RecipeApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Measurments", x => x.id);
+                    table.PrimaryKey("PK_Ingredients", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -62,20 +62,27 @@ namespace RecipeApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Ingredients",
+                name: "Recipes_Ingredients",
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: true),
-                    measurementId = table.Column<Guid>(type: "uuid", nullable: false)
+                    RecipeId = table.Column<Guid>(type: "uuid", nullable: false),
+                    IngredientId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Quantity = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Ingredients", x => x.id);
+                    table.PrimaryKey("PK_Recipes_Ingredients", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Ingredients_Measurments_measurementId",
-                        column: x => x.measurementId,
-                        principalTable: "Measurments",
+                        name: "FK_Recipes_Ingredients_Ingredients_IngredientId",
+                        column: x => x.IngredientId,
+                        principalTable: "Ingredients",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Recipes_Ingredients_Recipes_RecipeId",
+                        column: x => x.RecipeId,
+                        principalTable: "Recipes",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -105,72 +112,6 @@ namespace RecipeApp.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "FavouriteRecipes",
-                columns: table => new
-                {
-                    id = table.Column<Guid>(type: "uuid", nullable: false),
-                    UserId = table.Column<Guid>(type: "uuid", nullable: false),
-                    RecipeId = table.Column<Guid>(type: "uuid", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FavouriteRecipes", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_FavouriteRecipes_Recipes_RecipeId",
-                        column: x => x.RecipeId,
-                        principalTable: "Recipes",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_FavouriteRecipes_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Recipes_Ingredients",
-                columns: table => new
-                {
-                    id = table.Column<Guid>(type: "uuid", nullable: false),
-                    RecipeId = table.Column<Guid>(type: "uuid", nullable: false),
-                    IngredientId = table.Column<Guid>(type: "uuid", nullable: false),
-                    Quantity = table.Column<int>(type: "integer", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Recipes_Ingredients", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_Recipes_Ingredients_Ingredients_IngredientId",
-                        column: x => x.IngredientId,
-                        principalTable: "Ingredients",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Recipes_Ingredients_Recipes_RecipeId",
-                        column: x => x.RecipeId,
-                        principalTable: "Recipes",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_FavouriteRecipes_RecipeId",
-                table: "FavouriteRecipes",
-                column: "RecipeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_FavouriteRecipes_UserId",
-                table: "FavouriteRecipes",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Ingredients_measurementId",
-                table: "Ingredients",
-                column: "measurementId");
-
             migrationBuilder.CreateIndex(
                 name: "IX_Recipes_Ingredients_IngredientId",
                 table: "Recipes_Ingredients",
@@ -195,9 +136,6 @@ namespace RecipeApp.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "FavouriteRecipes");
-
-            migrationBuilder.DropTable(
                 name: "Recipes_Ingredients");
 
             migrationBuilder.DropTable(
@@ -214,9 +152,6 @@ namespace RecipeApp.Migrations
 
             migrationBuilder.DropTable(
                 name: "Types");
-
-            migrationBuilder.DropTable(
-                name: "Measurments");
         }
     }
 }

@@ -39,7 +39,6 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
             var amount = _context.Recipes_Ingredients
                 .Include(recipe => recipe.Recipe)
                 .Include(ingredient => ingredient.Ingredient)
-                .Include(measurement => measurement.Ingredient.measurement)
                 .Single(amount => amount.id == id);
             return amount;
         }
@@ -48,8 +47,7 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
         {
             return _context.Recipes_Ingredients
                 .Include(recipe => recipe.Recipe)
-                .Include(ingredient => ingredient.Ingredient)
-                .Include(measurement => measurement.Ingredient.measurement);
+                .Include(ingredient => ingredient.Ingredient);
         }
 
         public IEnumerable<Recipe_Ingredient> GetAllByName(string name)
@@ -59,7 +57,11 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
 
         public Recipe_Ingredient GetByName(string name)
         {
-            throw new NotImplementedException();
+            var amount = _context.Recipes_Ingredients
+                .Include(recipe => recipe.Recipe)
+                .Include(ingredient => ingredient.Ingredient)
+                .Single(amount => amount.Recipe.Name == name);
+            return amount;
         }
 
         public void Update(Recipe_Ingredient entity)

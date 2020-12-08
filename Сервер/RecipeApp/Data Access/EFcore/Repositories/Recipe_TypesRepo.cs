@@ -57,12 +57,15 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
 
         public Recipe_Type GetByName(string name)
         {
-            throw new NotImplementedException();
+            var amount = _context.Recipes_Types
+                .Include(recipe => recipe.recipe)
+                .Include(type => type.type)
+                .Single(amount => amount.recipe.Name == name);
+            return amount;
         }
 
         public void Update(Recipe_Type entity)
         {
-            //Recipe_Type entity = _context.Recipes_Types.Find(id);
             _context.Entry(entity).State = EntityState.Modified;
         }
     }

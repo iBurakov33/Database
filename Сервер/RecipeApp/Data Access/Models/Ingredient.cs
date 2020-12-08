@@ -10,7 +10,5 @@ namespace RecipeApp.Data_Access.Models
     {
         public Guid id { get; set; }
         public string Name { get; set; }
-        public Measurement measurement { get; set; }
-        public Guid measurementId { get; set; }
     }
 }

@@ -9,7 +9,5 @@ namespace RecipeApp.Business_Logic.DTO
     {
         public Guid id { get; set; }
         public string Name { get; set; }
-        public MeasurementDTO measurement { get; set; }
-        public Guid measurementId { get; set; }
     }
 }

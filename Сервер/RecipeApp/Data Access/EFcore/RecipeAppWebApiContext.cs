@@ -13,10 +13,8 @@ namespace RecipeApp.Data_Access.EFcore
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<Models.Type> Types { get; set; }
         public DbSet<Recipe_Ingredient> Recipes_Ingredients { get; set; }
-        public DbSet<Measurement> Measurments { get; set; }
         public DbSet<Recipe_Type> Recipes_Types { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<FavouriteRecipes> FavouriteRecipes { get; set; }
         public RecipeAppWebApiContext(DbContextOptions<RecipeAppWebApiContext> options)
             : base(options)
         { 

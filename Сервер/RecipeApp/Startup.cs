@@ -68,21 +68,15 @@ namespace RecipeApp
             services.AddScoped<IRepository<Ingredient>, IngredientRepo>();
             services.AddScoped<IRepository<RecipeApp.Data_Access.Models.Type>, TypesRepo>();
             services.AddScoped<IUserRepository, UsersRepo>();
-            services.AddScoped<IRepository<Measurement>, MeasurementRepo>();
-            services.AddScoped<IRepository<FavouriteRecipes>, FavouriteRecipesRepo>();
 
             services.AddScoped<IUnitOfWork, EFUnitOfwork>();
 
             services.AddScoped<IRecipeService, RecipeServices>();
-            services.AddScoped<IMeasurmentService, MeasurementService>();
             services.AddScoped<ITypesService, TypesService>();
             services.AddScoped<IIngredientService, IngredientService>();
             services.AddScoped<IRecipe_TypeService, Recipe_TypeService>();
             services.AddScoped<IRecipe_IngredientService, Recipe_IngredientService>();
             services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IFavouriteRecipesService, FavouriteRecipesService>();
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

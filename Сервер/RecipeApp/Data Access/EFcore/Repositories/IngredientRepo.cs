@@ -36,15 +36,13 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
         public Ingredient Get(Guid id)
         {
             var ingredient = _context.Ingredients
-                .Include(ingredient => ingredient.measurement)
                 .Single(amount => amount.id == id);
             return ingredient;
         }
 
         public IEnumerable<Ingredient> GetAll()
         {
-            return _context.Ingredients
-                .Include(measurement => measurement.measurement);
+            return _context.Ingredients;
         }
 
         public IEnumerable<Ingredient> GetAllByName(string name)
