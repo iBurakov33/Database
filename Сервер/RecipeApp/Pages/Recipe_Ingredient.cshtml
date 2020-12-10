@@ -4,32 +4,39 @@
 @{
     ViewData["Title"] = "Подробный рецепт";
 }
-<h2>@ViewData["Title"]</h2>
 @{var recipe = Model.recipe_Ingredient;}
-<h3>@recipe.Name</h3>
-    <table class="table">
-        <tbody>
-            @foreach (var type in Model.recipe_Types.Where(id => id.RecipeId == recipe.id))
-            {
-                <tr>@type.type.Name</tr>
-            }
+<h3 style="text-align:center; margin:12px;font-size:50px; font-weight:600;">@recipe.Name</h3>
+<div style="display:flex;justify-content:flex-start;">
+    @foreach (var type in Model.recipe_Types.Where(id => id.RecipeId == recipe.id))
+    {
+        <div style="        margin: 8px;
+        margin-top: 15px;
+        margin-bottom: 20px;
+        font-size: 20px;
+        border: 4px solid lightskyblue;
+        border-radius: 0 50% 50% 50%;
+        padding: 15px;">@type.type.Name</div>
+    }
+</div>
 
-        </tbody>
-    </table>
-    <img src=@recipe.Image>
-    <a href=@Url.Page("/AddIngredients", new { id = Model.recipe_Ingredient.id })>Добавить ингредиенты</a>
-    <a href=@Url.Page("/AddType", new { id = recipe.id })>Добавить виды рецепта</a>
+
+<div style="display:flex; margin:10px;"><img style=" box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); width:700px;margin-right:25px" src=@recipe.Image>
+<div style="font-size:20px;">@recipe.Description</div></div>
+ <a class="waves-effect waves-light btn-large red" style="margin:15px;"href=@Url.Page("/AddIngredients", new { id = Model.recipe_Ingredient.id })>Добавить ингредиенты</a>
+<a class="waves-effect waves-light btn-large red " href=@Url.Page("/AddType", new { id = recipe.id })>Добавить тип</a>
+<div style="width:600px; font-size:18px;margin-top:8px;">
     <table class="table">
         <thead>
             <tr><th>Ингредиенты</th><th>Количество</th></tr>
         </thead>
         <tbody>
-        @foreach (var ing in Model.recipe_Ingredients.Where(id => id.RecipeId == recipe.id))
-        {
-            <tr>
-                <td>@ing.Ingredient.Name</td>
-                <td>@ing.Quantity</td>
-            </tr>
-        }           
+            @foreach (var ing in Model.recipe_Ingredients.Where(id => id.RecipeId == recipe.id))
+            {
+                <tr>
+                    <td>@ing.Ingredient.Name</td>
+                    <td>@ing.Quantity</td>
+                </tr>
+            }
         </tbody>
     </table>
+</div>

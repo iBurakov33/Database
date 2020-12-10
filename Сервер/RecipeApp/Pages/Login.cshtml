@@ -1,9 +1,9 @@
 ﻿@page
 @model RecipeApp.Pages.LoginModel
 @{
-    ViewData["Title"] = "Регистрация";
+    ViewData["Title"] = "Вход";
 }
-<a asp-action="Login" asp-anti-forgery="true">Регистрация</a>
+
 
 <h2>@ViewData["Title"]</h2>
 <div asp-validation-summary="All"></div>
@@ -12,6 +12,8 @@
 <form method="POST">
     @*<div><label>id</label><br /><input asp-for="recipe.id" type="number" /></div>*@
     <div><label>Логин</label><br /><input asp-for="login" /></div>
-    <div><label>Пароль</label><br /><input asp-for="password" /></div>
-    <input type="submit" value="Войти" />
+    <div><label>Пароль</label><br /><input asp-for="password" type="password" class="validate"/></div>
+    <button class="waves-effect waves-light btn-large red" type="submit" name="action" style="margin:8px;">
+        Войти
+    </button>
 </form>
