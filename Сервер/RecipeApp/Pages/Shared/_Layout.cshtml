@@ -22,37 +22,28 @@
             <a id="logo-container" href="#" class="brand-logo" style="        color: red;
         font-family: 'Lobster', cursive; font-size: 50px;"> <img src="css/baker.svg" width="40" height="40" color="red" alt="image description">Кулинар</a>
             <ul class="right hide-on-med-and-down navbar_new" style=" font-size: 20px;">
-                @*@{
+                @{
                     if (Model.user != null)
                     {
                         if (Model.user.AdminRole)
                         {
-
+                            <li><a href="@Url.Page("/AddRecipe", new { login = Model.user.Login})">Добавить рецепт</a></li>
                         }
+                        <li><a href="@Url.Page("/Index", new { login = Model.user.Login})">Главная</a></li>
+                        <li><a href="@Url.Page("/Index")">Выход</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="@Url.Page("/Index")">Главная</a></li>
+                        <li><a href="@Url.Page("/Login")">Вход</a></li>
                     }
 
-                }*@
-                <li><a href="@Url.Page("/AddRecipe")">Добавить рецепт</a></li>
-                <li><a href="@Url.Page("/Index")">Главная</a></li>
-                <li><a href="@Url.Page("/Login")">Вход</a></li>
-
+                }
             </ul>
         </div>
     </nav>
 
     <div id="index-banner" class="parallax-container">
-        <div class="section no-pad-bot">
-            <div class="container">
-                <br><br>
-                <h1 class="header center teal-text text-lighten-2">@*Книга рецептов*@</h1>
-                <div class="row center">
-                    <h5 class="header col s12 light">@*Книга рецептов*@</h5>
-                </div>
-
-                <br><br>
-
-            </div>
-        </div>
         <div class="parallax"><img src="food-consumption-singapore.jpg" alt="Unsplashed background img 1"></div>
     </div>
 
@@ -69,13 +60,6 @@
 
 
     <div class="parallax-container valign-wrapper">
-        <div class="section no-pad-bot">
-            <div class="container">
-                <div class="row center">
-                    @*<h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>*@
-                </div>
-            </div>
-        </div>
         <div class="parallax"><img src="Hub_CoronavirusFood_Social.jpg" alt="Unsplashed background img 2"></div>
     </div>
 
@@ -84,7 +68,7 @@
     <footer class="page-footer black">
         <div class="footer-copyright">
             <div class="container">
-               Made by Burakov 2020
+                Made by Burakov 2020
             </div>
         </div>
     </footer>

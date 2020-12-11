@@ -6,10 +6,16 @@
 <h2>@ViewData["Title"]</h2>
 <div asp-validation-summary="All"></div>
 <form method="POST">
-    @*<div><label>id</label><br /><input asp-for="recipe.id" type="number" /></div>*@
     <div><label>Имя</label><br /><input asp-for="recipe.Name" /></div>
     <div><label>Время готовки</label><br /><input asp-for="recipe.MakeTime" type="time" /></div>
     <div><label>Изображение</label><br /><input asp-for="recipe.Image" /></div>
-    <div><label>Описание</label><br /><input asp-for="recipe.Description" /></div>
-    <input type="submit" value="Отправить" />
+    <div><label>Краткое описание</label><br /><textarea id="textarea" asp-for="recipe.DescriptionShort" class="materialize-textarea"></textarea></div>
+    <div><label>Полное описание приготовления</label><br /> <textarea id="textarea" asp-for="recipe.DescriptionFull" class="materialize-textarea"></textarea></div>
+    <div><label>Белки</label><br /><textarea id="textarea" asp-for="recipe.Proteins" class="materialize-textarea"></textarea></div>
+    <div><label>Жиры</label><br /><textarea id="textarea" asp-for="recipe.Fats" class="materialize-textarea"></textarea></div>
+    <div><label>Углеводы</label><br /><textarea id="textarea" asp-for="recipe.Carbohydrates" class="materialize-textarea"></textarea></div>
+    <div><label>Калорийность</label><br /><textarea id="textarea" asp-for="recipe.Nutritions" class="materialize-textarea"></textarea></div>
+    <button class="waves-effect waves-light btn-large red" type="submit" name="action" style="margin:8px;">
+        Добавить рецепт
+    </button>
 </form>

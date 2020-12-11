@@ -11,7 +11,7 @@
 }
 <div asp-validation-summary="All"></div>
 
-<form method="POST" asp-route-id="@recipe.id, @ing.id, @type.id">
+<form method="POST">
     <input asp-for="recipe.id" type="hidden" />
     <input asp-for="recipe_Ingredient.id" type="hidden" />
     <input asp-for="recipe_Type.id" type="hidden" />
@@ -19,6 +19,8 @@
         <label>Удаление рецепта</label><br /><input asp-for="recipe.Name" />
         <span asp-validation-for="recipe.Name"></span>
     </div>
-    <input type="submit" value="Удалить" />
+    <button class="waves-effect waves-light btn-large red" type="submit" name="action" style="margin:8px;">
+        Удалить
+    </button>
 </form>
 

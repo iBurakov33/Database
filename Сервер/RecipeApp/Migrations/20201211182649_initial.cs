@@ -27,7 +27,13 @@ namespace RecipeApp.Migrations
                     Name = table.Column<string>(type: "text", nullable: true),
                     MakeTime = table.Column<TimeSpan>(type: "interval", nullable: false),
                     Image = table.Column<string>(type: "text", nullable: true),
-                    Description = table.Column<string>(type: "text", nullable: true)
+                    CreationDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    DescriptionShort = table.Column<string>(type: "text", nullable: true),
+                    DescriptionFull = table.Column<string>(type: "text", nullable: true),
+                    Nutritions = table.Column<double>(type: "double precision", nullable: false),
+                    Carbohydrates = table.Column<double>(type: "double precision", nullable: false),
+                    Fats = table.Column<double>(type: "double precision", nullable: false),
+                    Proteins = table.Column<double>(type: "double precision", nullable: false)
                 },
                 constraints: table =>
                 {

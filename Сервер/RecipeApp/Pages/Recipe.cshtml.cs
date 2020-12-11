@@ -13,17 +13,29 @@ namespace RecipeApp.Pages
     {
         private readonly IRecipe_TypeService _service;
         private readonly ITypesService _typesService;
+        private readonly IUserService _userService;
         public IEnumerable<Recipe_TypeDTO> recipes { get; set; }
+        public UserDTO user { get; set; }
         public IEnumerable<TypeDTO> types { get; set; }
-        public RecipeModel(IRecipe_TypeService db, ITypesService dbT)
+        public RecipeModel(IRecipe_TypeService db, ITypesService dbT, IUserService dbU)
         {
             _service = db;
             _typesService = dbT;
+            _userService = dbU;
         }
-        public void OnGet(string name)
+        public void OnGet(string name, string login)
         {
-            recipes = _service.GetAll().Where(recipes => recipes.type.Name == name);
-            types = _typesService.GetAll();
+            if (login == null)
+            {
+                recipes = _service.GetAll().Where(recipes => recipes.type.Name == name);
+                types = _typesService.GetAll();
+            }
+            else
+            {
+                recipes = _service.GetAll().Where(recipes => recipes.type.Name == name);
+                types = _typesService.GetAll();
+                user = _userService.GetByLogin(login);
+            }
         }
     }
 }

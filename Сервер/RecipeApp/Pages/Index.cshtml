@@ -18,54 +18,46 @@
 <div style="display:flex;justify-content:flex-start;">
     @foreach (var type in Model.types)
     {
-        
+
         <a style="margin: 8px;
         margin-top: 15px;
         margin-bottom: 20px;
         font-size: 20px;
         border: 4px solid lightskyblue;
         border-radius: 0 50% 50% 50%;
-        padding: 15px;" href=@Url.Page("/Recipe", new { name = type.Name})>@type.Name</a>
+        padding: 15px;" href=@Url.Page("/Recipe", new { name = type.Name, login = _login})>@type.Name</a>
 
 
     }
 </div>
 
-        @foreach (var recipe in Model.recipes)
-        {
-            <div class="col l4 s12 m7">
-                <div class="card">
-                    <div class="card-image">
-                        <img src=@recipe.Image>
-
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title" style="font-size:24px;font-weight:600;">@recipe.Name</span>
-                        <p>
-                            @recipe.Description
-                        </p>
-                    </div>
-                    <div style="display:flex; flex-wrap:wrap; justify-content:space-around;">
-                        <a class="waves-effect waves-light btn-large red" style="margin-bottom:8px;" href=@Url.Page("/Recipe_ingredient", new { id = recipe.id })>Подробнее</a>
-
-
-
-
-                        @{
-                            if (Model.user != null)
-                            {
-                                if (Model.user.AdminRole)
-                                {
-                                    <a class="waves-effect waves-light btn-large red" style="margin-bottom:8px;" href=@Url.Page("/UpdateRecipe", new { id = recipe.id})>Редактировать</a>
-
-
-                                    <a class="waves-effect waves-light btn-large red" style="margin-bottom:8px;" href=@Url.Page("/DeleteRecipe", new { id = recipe.id})>Удалить</a>
-                                }
-                            }
-
-                        }
-                    </div>
-                </div>
+@foreach (var recipe in Model.recipes)
+{
+    <div class="col l4 s12 m7">
+        <div class="card">
+            <div class="card-image">
+                <img src=@recipe.Image>
             </div>
-        }
+            <div class="card-content">
+                <span class="card-title" style="font-size:24px;font-weight:600;">@recipe.Name</span>
+                <p>
+                    @recipe.DescriptionShort
+                </p>
+            </div>
+            <div style="display:flex; flex-wrap:wrap; justify-content:space-around;">
+                <a class="waves-effect waves-light btn-large red" style="margin-bottom:8px;" href=@Url.Page("/Recipe_ingredient", new { id = recipe.id, login = _login })>Подробнее</a>
+                @{
+                    if (Model.user != null)
+                    {
+                        if (Model.user.AdminRole)
+                        {
+                            <a class="waves-effect waves-light btn-large red" style="margin-bottom:8px;" href=@Url.Page("/UpdateRecipe", new { id = recipe.id, login = _login})>Редактировать</a>
+                            <a class="waves-effect waves-light btn-large red" style="margin-bottom:8px;" href=@Url.Page("/DeleteRecipe", new { id = recipe.id, login = _login})>Удалить</a>
+                        }
+                    }
+                }
+            </div>
+        </div>
+    </div>
+}
 

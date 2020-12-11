@@ -3,40 +3,71 @@
 
 @{
     ViewData["Title"] = "Подробный рецепт";
+    string _login;
+    if (Model.user == null)
+    {
+        _login = "";
+    }
+    else
+    {
+        _login = Model.user.Login;
+    }
 }
-@{var recipe = Model.recipe_Ingredient;}
-<h3 style="text-align:center; margin:12px;font-size:50px; font-weight:600;">@recipe.Name</h3>
+@{var recipe = Model.recipe_Ingredient; }
+
+<h3 style="text-align:center; margin:18px;font-size:50px; font-weight:600;">@recipe.Name</h3>
 <div style="display:flex;justify-content:flex-start;">
     @foreach (var type in Model.recipe_Types.Where(id => id.RecipeId == recipe.id))
     {
-        <div style="        margin: 8px;
+        <a style="margin: 8px;
         margin-top: 15px;
         margin-bottom: 20px;
         font-size: 20px;
         border: 4px solid lightskyblue;
         border-radius: 0 50% 50% 50%;
-        padding: 15px;">@type.type.Name</div>
+        padding: 15px;" href=@Url.Page("/Recipe", new { name = type.type.Name})>@type.type.Name</a>
     }
 </div>
 
 
-<div style="display:flex; margin:10px;"><img style=" box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); width:700px;margin-right:25px" src=@recipe.Image>
-<div style="font-size:20px;">@recipe.Description</div></div>
- <a class="waves-effect waves-light btn-large red" style="margin:15px;"href=@Url.Page("/AddIngredients", new { id = Model.recipe_Ingredient.id })>Добавить ингредиенты</a>
-<a class="waves-effect waves-light btn-large red " href=@Url.Page("/AddType", new { id = recipe.id })>Добавить тип</a>
-<div style="width:600px; font-size:18px;margin-top:8px;">
-    <table class="table">
-        <thead>
-            <tr><th>Ингредиенты</th><th>Количество</th></tr>
-        </thead>
-        <tbody>
-            @foreach (var ing in Model.recipe_Ingredients.Where(id => id.RecipeId == recipe.id))
-            {
-                <tr>
-                    <td>@ing.Ingredient.Name</td>
-                    <td>@ing.Quantity</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+<p>
+    <img style=" box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); width:700px; margin-right:25px; float:left" src=@recipe.Image>
+    <div style="font-size:20px;">@recipe.DescriptionFull</div>
+</p>
+
+ <div style="font-size:20px; font-weight:500; color:cornflowerblue; margin-top:25px;">  <i class="small material-icons">access_time</i> Время приготовления: @recipe.MakeTime</div>
+ <div style="margin-top:10px;">
+     <div style="font-size:22px;font-weight:600; margin:10px;">Энергетическая ценность (на 100гр):</div>
+     <div style="font-size:20px;"><span>Калорийность-</span>@recipe.Nutritions ккал</div>
+     <div style="font-size:20px;"><span>Белки-</span>@recipe.Proteins г</div>
+     <div style="font-size:20px;"><span>Жиры-</span>@recipe.Fats г</div>
+     <div style="font-size:20px;"><span>Углеводы-</span>@recipe.Carbohydrates г</div>
+ </div>
+@{
+    if (Model.user != null)
+    {
+        if (Model.user.AdminRole)
+        {
+            <a class="waves-effect waves-light btn-large red" style="margin:15px;" href=@Url.Page("/AddIngredients", new { id = Model.recipe_Ingredient.id, login = Model.user.Login })>Добавить ингредиенты</a>
+            <a class="waves-effect waves-light btn-large red " href=@Url.Page("/AddType", new { id = recipe.id, login = Model.user.Login })>Добавить тип</a>
+        }
+    }
+}
+<div style="display:flex; margin:10px;">
+    <div style="width:600px; font-size:18px;margin-top:8px;">
+        <table class="table">
+            <thead>
+                <tr><th>Ингредиенты</th><th>Количество</th></tr>
+            </thead>
+            <tbody>
+                @foreach (var ing in Model.recipe_Ingredients.Where(id => id.RecipeId == recipe.id))
+                {
+                    <tr>
+                        <td>@ing.Ingredient.Name</td>
+                        <td>@ing.Quantity</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>

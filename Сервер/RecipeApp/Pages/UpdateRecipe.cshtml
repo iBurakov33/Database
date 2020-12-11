@@ -6,12 +6,7 @@
 <h2>@ViewData["Title"]</h2>
 @{ var recipe = Model.recipe;}
 <div asp-validation-summary="All"></div>
-@*<input asp-for="recipe.id" type="hidden" />*@
 <form method="POST" asp-route-id="@recipe.id">
-    <div>
-        @*<label>id</label><br /><input asp-for="recipe.id"/>
-        <span asp-validation-for="recipe.id"></span>*@
-    </div>
     <div>
         <label>Имя</label><br /><input asp-for="recipe.Name" />
         <span asp-validation-for="recipe.Name"></span>
@@ -25,8 +20,30 @@
         <span asp-validation-for="recipe.Image"></span>
     </div>
     <div>
-        <label>Описание</label><br /><input asp-for="recipe.Description" />
-        <span asp-validation-for="recipe.Description"></span>
+        <label>Краткое описание</label><br /><textarea id="textarea" asp-for="recipe.DescriptionShort" class="materialize-textarea"></textarea>
+        <span asp-validation-for="recipe.DescriptionShort"></span>
     </div>
-    <input type="submit" value="Отправить" />
+    <div>
+        <label>Полное описание приготовления</label><br /><textarea id="textarea" asp-for="recipe.DescriptionFull" class="materialize-textarea"></textarea>
+        <span asp-validation-for="recipe.DescriptionFull"></span>
+    </div>
+    <div>
+        <label>Белки</label><br /><textarea id="textarea" asp-for="recipe.Proteins" class="materialize-textarea"></textarea>
+        <span asp-validation-for="recipe.Proteins"></span>
+    </div>
+    <div>
+        <label>Жиры</label><br /><textarea id="textarea" asp-for="recipe.Fats" class="materialize-textarea"></textarea>
+        <span asp-validation-for="recipe.Fats"></span>
+    </div>
+    <div>
+        <label>Углеводы</label><br /><textarea id="textarea" asp-for="recipe.Carbohydrates" class="materialize-textarea"></textarea>
+        <span asp-validation-for="recipe.Carbohydrates"></span>
+    </div>
+    <div>
+        <label>Калорийность</label><br /><textarea id="textarea" asp-for="recipe.Nutritions" class="materialize-textarea"></textarea>
+        <span asp-validation-for="recipe.Nutritions"></span>
+    </div>
+    <button class="waves-effect waves-light btn-large red" type="submit" name="action" style="margin:8px;">
+        Изменить
+    </button>
 </form>

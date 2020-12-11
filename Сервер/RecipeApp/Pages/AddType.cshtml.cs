@@ -15,30 +15,41 @@ namespace RecipeApp.Pages
         private readonly IRecipe_TypeService _service;
         private readonly IRecipeService _recipeService;
         private readonly ITypesService _typesService;
+        private readonly IUserService _userService;
         public Recipe_TypeDTO type { get; set; }
-        public RecipeDTO recipe { get; set; }
+        public RecipeDTOFull recipe { get; set; }
+        public UserDTO user { get; set; }
         public TypeDTO typeMain { get; set; }
         public string typeName { get; set; }
-        public AddTypeModel(IRecipe_TypeService db, IRecipeService dbR, ITypesService dbT)
+        public AddTypeModel(IRecipe_TypeService db, IRecipeService dbR, ITypesService dbT, IUserService dbU)
         {
             _service = db;
             _recipeService = dbR;
             _typesService = dbT;
+            _userService = dbU;
         }
-
-        public void OnGet(Guid id)
+        public void OnGet(Guid id, string login)
         {
             recipe = _recipeService.Get(id);
+            user = _userService.GetByLogin(login);
         }
         public IActionResult OnPost()
         {
             if (ModelState.IsValid)
             {
                 type.RecipeId = recipe.id;
-                typeMain = _typesService.GetByName(typeName);
+                try
+                {
+                    typeMain = _typesService.GetByName(typeName);
+                }
+                catch (InvalidOperationException)
+                {
+                    _typesService.Add(new TypeDTO { Name = typeName });
+                    typeMain = _typesService.GetByName(typeName);
+                }
                 type.TypeId = typeMain.id;
                 _service.Add(type);
-                return RedirectToPage("Index");
+                return Redirect(Url.Page("/Index", new { login = user.Login }));
             }
             return Page();
         }

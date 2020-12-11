@@ -8,7 +8,7 @@ namespace RecipeApp.Business_Logic.DTO
     public class Recipe_TypeDTO
     {
         public Guid id { get; set; }
-        public RecipeDTO recipe { get; set; }
+        public RecipeDTOFull recipe { get; set; }
         public Guid RecipeId { get; set; }
         public TypeDTO type { get; set; }
         public Guid TypeId { get; set; }

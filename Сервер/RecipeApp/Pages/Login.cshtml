@@ -10,9 +10,8 @@
 @{ var login = Model.login;
     var password = Model.password;}
 <form method="POST">
-    @*<div><label>id</label><br /><input asp-for="recipe.id" type="number" /></div>*@
     <div><label>Логин</label><br /><input asp-for="login" /></div>
-    <div><label>Пароль</label><br /><input asp-for="password" type="password" class="validate"/></div>
+    <div><label>Пароль</label><br /><input asp-for="password"  class="validate"/></div>
     <button class="waves-effect waves-light btn-large red" type="submit" name="action" style="margin:8px;">
         Войти
     </button>

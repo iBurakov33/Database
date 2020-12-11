@@ -9,10 +9,10 @@ namespace RecipeApp.Business_Logic.Interfaces
 {
     public interface IRecipeService 
     {
-        void Add(RecipeDTO entity);
+        void Add(RecipeDTOFull entity);
         void Delete(Guid id);
-        RecipeDTO Get(Guid id);
-        IEnumerable<RecipeDTO> GetAll();
-        void Update(RecipeDTO entity);
+        RecipeDTOFull Get(Guid id);
+        IEnumerable<RecipeDTOShort> GetAll();
+        void Update(RecipeDTOFull entity);
     }
 }

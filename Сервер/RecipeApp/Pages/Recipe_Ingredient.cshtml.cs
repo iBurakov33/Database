@@ -14,22 +14,33 @@ namespace RecipeApp.Pages
         private readonly IRecipe_IngredientService _serviceR_I;
         private readonly IRecipeService _serviceR;
         private readonly IRecipe_TypeService _TypeService;
-        public RecipeDTO recipe_Ingredient { get; set; }
+        private readonly IUserService _userService;
+        public RecipeDTOFull recipe_Ingredient { get; set; }
+        public UserDTO user { get; set; }
         public IEnumerable<Recipe_IngredientDTO> recipe_Ingredients { get; set; }
         public IEnumerable<Recipe_TypeDTO> recipe_Types { get; set; }
-        public Recipe_IngredientModel(IRecipe_IngredientService dbR_I, IRecipeService dbR, IRecipe_TypeService dbR_T)
+        public Recipe_IngredientModel(IRecipe_IngredientService dbR_I, IRecipeService dbR, IRecipe_TypeService dbR_T, IUserService dbU)
         {
             _serviceR_I = dbR_I;
             _serviceR = dbR;
             _TypeService = dbR_T;
+            _userService = dbU;
         }
-        public void OnGet(Guid id)
+        public void OnGet(Guid id, string login)
         {
-            //int id = 8;
-            //Recipeid = _service.Get(id).
-            recipe_Ingredient = _serviceR.Get(id);
-            recipe_Ingredients = _serviceR_I.GetAll();
-            recipe_Types = _TypeService.GetAll();
+            if (login == null)
+            {
+                recipe_Ingredient = _serviceR.Get(id);
+                recipe_Ingredients = _serviceR_I.GetAll();
+                recipe_Types = _TypeService.GetAll();
+            }
+            else
+            {
+                recipe_Ingredient = _serviceR.Get(id);
+                recipe_Ingredients = _serviceR_I.GetAll();
+                recipe_Types = _TypeService.GetAll();
+                user = _userService.GetByLogin(login);
+            }  
         }
     }
 }

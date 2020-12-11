@@ -18,6 +18,7 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
         public void Add(Recipe entity)
         {
             entity.id = new Guid();
+            entity.CreationDate = DateTime.Now;
             _context.Add(entity);
         }
 

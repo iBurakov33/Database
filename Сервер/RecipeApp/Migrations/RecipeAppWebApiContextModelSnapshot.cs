@@ -39,8 +39,20 @@ namespace RecipeApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<string>("Description")
+                    b.Property<double>("Carbohydrates")
+                        .HasColumnType("double precision");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("DescriptionFull")
                         .HasColumnType("text");
+
+                    b.Property<string>("DescriptionShort")
+                        .HasColumnType("text");
+
+                    b.Property<double>("Fats")
+                        .HasColumnType("double precision");
 
                     b.Property<string>("Image")
                         .HasColumnType("text");
@@ -50,6 +62,12 @@ namespace RecipeApp.Migrations
 
                     b.Property<string>("Name")
                         .HasColumnType("text");
+
+                    b.Property<double>("Nutritions")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("Proteins")
+                        .HasColumnType("double precision");
 
                     b.HasKey("id");
 
