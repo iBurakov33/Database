@@ -21,25 +21,43 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
             _context.Add(entity);
         }
 
-        public void Delete(int id)
+        public void AddDefault(Ingredient entity, Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(Guid id)
         {
             Ingredient entity = _context.Ingredients.Find(id);
             if (entity != null)
                 _context.Ingredients.Remove(entity);
         }
 
-        public Ingredient Get(int id)
+        public Ingredient Get(Guid id)
         {
             var ingredient = _context.Ingredients
-                .Include(ingredient => ingredient.measurement)
                 .Single(amount => amount.id == id);
             return ingredient;
         }
 
         public IEnumerable<Ingredient> GetAll()
         {
-            return _context.Ingredients
-                .Include(measurement => measurement.measurement);
+            return _context.Ingredients;
+        }
+
+        public IEnumerable<Ingredient> GetAllByName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Ingredient GetById(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Ingredient GetByName(string name)
+        {
+            return _context.Ingredients.Single(ing => ing.Name == name);
         }
 
         public void Update(Ingredient entity)

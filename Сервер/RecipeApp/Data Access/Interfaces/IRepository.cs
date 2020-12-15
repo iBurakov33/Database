@@ -7,31 +7,14 @@ namespace RecipeApp.Data_Access.Interfaces
 {
     public interface IRepository<T> where T : class, IEntity
     {
-        /// <summary>
-        /// Метод для получения информации о всех сущностях данного типа
-        /// </summary>
-        /// <returns></returns>
         IEnumerable<T> GetAll();
-        /// <summary>
-        /// Метод получения информации о сущности по ее Id
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        T Get(int id);
-        /// <summary>
-        /// Метод добавления сущности в базу данных
-        /// </summary>
-        /// <param name="entity"></param>
+        T Get(Guid id);
+        T GetByName(string name);
+        public IEnumerable<T> GetAllByName(string name);
         void Add(T entity);
-        /// <summary>
-        /// Метод изменения сущности
-        /// </summary>
-        /// <param name="entity"></param>
         void Update(T entity);
-        /// <summary>
-        /// Метод удаления сущности
-        /// </summary>
-        /// <param name="id"></param>
-        void Delete(int id);
+        void Delete(Guid id);
+        public void AddDefault(T entity, Guid id);
+        T GetById(Guid id);
     }
 }

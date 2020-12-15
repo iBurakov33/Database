@@ -13,7 +13,7 @@ namespace RecipeApp.Data_Access.Interfaces
         IRepository<Models.Type> GetTypeRepo { get; }
         IRepository<Recipe_Ingredient> GetRecipe_IngredientRepo { get; }
         IRepository<Recipe_Type> GetRecipe_TypeRepo { get; }
-        IRepository<Measurement> GetMeasurmentRepo { get; }
+        IUserRepository GetUsersRepo { get; }
         void Save();
     }
 }

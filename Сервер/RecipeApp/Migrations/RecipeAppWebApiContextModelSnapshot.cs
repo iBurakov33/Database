@@ -21,48 +21,38 @@ namespace RecipeApp.Migrations
 
             modelBuilder.Entity("RecipeApp.Data_Access.Models.Ingredient", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
-                    b.Property<int>("measurementId")
-                        .HasColumnType("integer");
-
                     b.HasKey("id");
-
-                    b.HasIndex("measurementId");
 
                     b.ToTable("Ingredients");
                 });
 
-            modelBuilder.Entity("RecipeApp.Data_Access.Models.Measurement", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
-
-                    b.Property<string>("Name")
-                        .HasColumnType("text");
-
-                    b.HasKey("id");
-
-                    b.ToTable("Measurments");
-                });
-
             modelBuilder.Entity("RecipeApp.Data_Access.Models.Recipe", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("uuid");
 
-                    b.Property<string>("Description")
+                    b.Property<double>("Carbohydrates")
+                        .HasColumnType("double precision");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("DescriptionFull")
                         .HasColumnType("text");
+
+                    b.Property<string>("DescriptionShort")
+                        .HasColumnType("text");
+
+                    b.Property<double>("Fats")
+                        .HasColumnType("double precision");
 
                     b.Property<string>("Image")
                         .HasColumnType("text");
@@ -73,26 +63,36 @@ namespace RecipeApp.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
+                    b.Property<double>("Nutritions")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("Proteins")
+                        .HasColumnType("double precision");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
                     b.HasKey("id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Recipes");
                 });
 
             modelBuilder.Entity("RecipeApp.Data_Access.Models.Recipe_Ingredient", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("uuid");
 
-                    b.Property<int>("IngredientId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("IngredientId")
+                        .HasColumnType("uuid");
 
-                    b.Property<int>("Quantity")
-                        .HasColumnType("integer");
+                    b.Property<string>("Quantity")
+                        .HasColumnType("text");
 
-                    b.Property<int>("RecipeId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("RecipeId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("id");
 
@@ -105,16 +105,15 @@ namespace RecipeApp.Migrations
 
             modelBuilder.Entity("RecipeApp.Data_Access.Models.Recipe_Type", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("uuid");
 
-                    b.Property<int>("RecipeId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("RecipeId")
+                        .HasColumnType("uuid");
 
-                    b.Property<int>("TypeId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("TypeId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("id");
 
@@ -127,10 +126,9 @@ namespace RecipeApp.Migrations
 
             modelBuilder.Entity("RecipeApp.Data_Access.Models.Type", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Name")
                         .HasColumnType("text");
@@ -140,15 +138,38 @@ namespace RecipeApp.Migrations
                     b.ToTable("Types");
                 });
 
-            modelBuilder.Entity("RecipeApp.Data_Access.Models.Ingredient", b =>
+            modelBuilder.Entity("RecipeApp.Data_Access.Models.User", b =>
                 {
-                    b.HasOne("RecipeApp.Data_Access.Models.Measurement", "measurement")
+                    b.Property<Guid>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<bool>("AdminRole")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Login")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("text");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("RecipeApp.Data_Access.Models.Recipe", b =>
+                {
+                    b.HasOne("RecipeApp.Data_Access.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("measurementId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("measurement");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("RecipeApp.Data_Access.Models.Recipe_Ingredient", b =>

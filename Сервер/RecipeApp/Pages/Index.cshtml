@@ -1,10 +1,35 @@
 ﻿@page
 @model RecipeApp.Pages.IndexModel
 @{
-    ViewData["Title"] = "Список рецептов";
+    ViewData["Title"] = "Рецепты";
+    string _login;
+    if (Model.user == null)
+    {
+        _login = "";
+    }
+    else
+    {
+        _login = Model.user.Login;
+    }
+
 }
-<h2>@ViewData["Title"]</h2>
-<p><a asp-page="AddRecipe">Добавить рецепт</a></p>
+<h2 style="text-align:center; margin:12px;font-size:55px; font-weight:600;">@ViewData["Title"]</h2>
+
+<div style="display:flex;justify-content:flex-start;">
+    @foreach (var type in Model.types)
+    {
+
+        <a style="margin: 8px;
+        margin-top: 15px;
+        margin-bottom: 20px;
+        font-size: 20px;
+        border: 4px solid lightskyblue;
+        border-radius: 0 50% 50% 50%;
+        padding: 15px;" href=@Url.Page("/Recipe", new { name = type.Name, login = _login})>@type.Name</a>
+
+
+    }
+</div>
 
 @foreach (var recipe in Model.recipes)
 {
@@ -12,34 +37,27 @@
         <div class="card">
             <div class="card-image">
                 <img src=@recipe.Image>
-                <span class="card-title">@recipe.Name</span>
             </div>
             <div class="card-content">
+                <span class="card-title" style="font-size:24px;font-weight:600;">@recipe.Name</span>
                 <p>
-                    @recipe.Description
+                    @recipe.DescriptionShort
                 </p>
             </div>
-            <div class="card-action">
-                <a href=@Url.Page("/Recipe_ingredient", new { id = recipe.id })>Подробное описание рецепта</a>
-            </div>
-            <div class="card-action">
-                <a href=@Url.Page("/UpdateRecipe", new { id = recipe.id})>Редактировать рецепт</a>
-            </div>
-            <div class="card-action">
-                <a href=@Url.Page("/DeleteRecipe", new { id = recipe.id})>Удалить рецепт</a>
+            <div style="display:flex; flex-wrap:wrap; justify-content:space-around;">
+                <a class="waves-effect waves-light btn-large red" style="margin-bottom:8px;" href=@Url.Page("/Recipe_ingredient", new { id = recipe.id, login = _login })>Подробнее</a>
+                @{
+                    if (Model.user != null)
+                    {
+                        if (Model.user.AdminRole)
+                        {
+                            <a class="waves-effect waves-light btn-large red" style="margin-bottom:8px;" href=@Url.Page("/UpdateRecipe", new { id = recipe.id, login = _login})>Редактировать</a>
+                            <a class="waves-effect waves-light btn-large red" style="margin-bottom:8px;" href=@Url.Page("/DeleteRecipe", new { id = recipe.id, login = _login})>Удалить</a>
+                        }
+                    }
+                }
             </div>
         </div>
     </div>
 }
 
-    @*<table class="table">
-        <thead>
-            <tr><th>id</th><th>Name</th><th>Make Time</th><th>Description</th></tr>
-        </thead>
-        <tbody>
-            @foreach (var recipe in Model.recipes)
-            {
-                <tr><td>@recipe.Name</td><td>@recipe.Image</td><td>@recipe.Description</td></tr>
-            }
-        </tbody>
-    </table>*@

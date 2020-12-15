@@ -30,20 +30,19 @@ namespace RecipeApp.Business_Logic.Services
             _db.Save();
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
             _db.GetRecipe_TypeRepo.Delete(id);
         }
 
         public void Update(Recipe_TypeDTO entity)
         {
-            //
             Recipe_Type recipe_Type = _mapper.Map<Recipe_Type>(entity);
             _db.GetRecipe_TypeRepo.Update(recipe_Type);
             _db.Save();
         }
 
-        public Recipe_TypeDTO Get(int id)
+        public Recipe_TypeDTO Get(Guid id)
         {
             var recipe_type = _db.GetRecipe_TypeRepo.Get(id);
             return _mapper.Map<Recipe_Type, Recipe_TypeDTO>(recipe_type);
@@ -51,8 +50,20 @@ namespace RecipeApp.Business_Logic.Services
 
         public IEnumerable<Recipe_TypeDTO> GetAll()
         {
-            var recipe_type = _db.GetRecipe_TypeRepo.GetAll().OrderByDescending(recipe_type => recipe_type.recipe.MakeTime);
+            var recipe_type = _db.GetRecipe_TypeRepo.GetAll();
             return _mapper.Map<IEnumerable<Recipe_Type>, IEnumerable<Recipe_TypeDTO>>(recipe_type);
+        }
+
+        public Recipe_TypeDTO GetByName(string name)
+        {
+            var recipe_type = _db.GetRecipe_TypeRepo.GetByName(name);
+            return _mapper.Map<Recipe_Type, Recipe_TypeDTO>(recipe_type);
+        }
+
+        public Recipe_TypeDTO GetById(Guid id)
+        {
+            var recipe_type = _db.GetRecipe_TypeRepo.GetById(id);
+            return _mapper.Map<Recipe_Type, Recipe_TypeDTO>(recipe_type);
         }
     }
 }

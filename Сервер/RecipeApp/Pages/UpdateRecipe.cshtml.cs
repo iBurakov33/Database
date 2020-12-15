@@ -9,38 +9,37 @@ using RecipeApp.Business_Logic.Interfaces;
 
 namespace RecipeApp.Pages
 {
+    [BindProperties]
     public class UpdateRecipeModel : PageModel
     {
         private readonly IRecipeService service;
-        [BindProperty]
-        public RecipeDTO recipe { get; set; }
-        public UpdateRecipeModel(IRecipeService db)
+        private readonly IUserService _userService;
+        public UserDTO user { get; set; }
+        public RecipeDTOFull recipe { get; set; }
+        public UpdateRecipeModel(IRecipeService db, IUserService dbU)
         {
             service = db;
+            _userService = dbU;
         }
-        public IActionResult OnGet(int id)
+        public void OnGet(Guid id, string login)
         {
             recipe = service.Get(id);
-            //if (id == null)
-            //{
-            //    return NotFound();
-            //}
-
-            return Page();
+            user = _userService.GetByLogin(login);
         }
-        public IActionResult OnPost()
+        public IActionResult OnPost(Guid id)
         {
-            
             if (recipe == null)
             {
                 return NotFound();
             }
+            recipe.id = id;
+            recipe.UserId = user.id;
             service.Update(recipe);
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-            return RedirectToPage("Index");
+            return Redirect(Url.Page("/Index", new { login = user.Login }));
         }
     }
 }

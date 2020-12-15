@@ -7,6 +7,6 @@ namespace RecipeApp.Data_Access.Interfaces
 {
     public interface IEntity
     {
-        public int id { get; set; }
+        public Guid id { get; set; }
     }
 }

@@ -4,10 +4,18 @@
     ViewData["Title"] = "Добавление типа к рецепту";
 }
 <h2>@ViewData["Title"]</h2>
+@{var type = Model.type;
+    var recipe = Model.recipe;
+    var typeMain = Model.typeMain;
+    var typeName = Model.typeName;}
 <div asp-validation-summary="All"></div>
+<input asp-for="type.RecipeId" type="hidden" />
 <form method="POST">
-    <div><label>id</label><br /><input asp-for="type.id" type="number" /></div>
-    <div><label>Рецепт</label><br /><input asp-for="type.RecipeId" /></div>
-    <div><label>Тип</label><br /><input asp-for="type.TypeId" /></div>
-    <input type="submit" value="Отправить" />
+    @*<div><label>id</label><br /><input asp-for="type.id"/></div>
+    <div><label>Добавить тип к рецепту</label><br /><input asp-for="type.RecipeId" /></div>*@
+    <div>
+        <label>Тип</label><br /><input asp-for="typeName" />
+        <span asp-validation-for="typeName"></span>
+    </div>
+    <button class="waves-effect waves-light btn-large red" type="submit" name="action" style="margin:8px;">Добавить</button>
 </form>

@@ -9,8 +9,9 @@ namespace RecipeApp.Business_Logic.Interfaces
     public interface ITypesService
     {
         void Add(TypeDTO entity);
-        void Delete(int id);
-        TypeDTO Get(int id);
+        void Delete(Guid id);
+        TypeDTO Get(Guid id);
+        TypeDTO GetByName(string name);
         IEnumerable<TypeDTO> GetAll();
         void Update(TypeDTO entity);
     }

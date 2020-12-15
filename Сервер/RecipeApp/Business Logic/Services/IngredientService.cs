@@ -30,12 +30,12 @@ namespace RecipeApp.Business_Logic.Services
             _db.Save();
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
             _db.GetIngredientRepo.Delete(id);
         }
 
-        public IngredientDTO Get(int id)
+        public IngredientDTO Get(Guid id)
         {
             var ingredient = _db.GetIngredientRepo.Get(id);
             return _mapper.Map<Ingredient, IngredientDTO>(ingredient);
@@ -47,9 +47,14 @@ namespace RecipeApp.Business_Logic.Services
             return _mapper.Map<IEnumerable<Ingredient>, IEnumerable<IngredientDTO>>(ingredient);
         }
 
+        public IngredientDTO GetByName(string name)
+        {
+            var ingredient = _db.GetIngredientRepo.GetByName(name);
+            return _mapper.Map<Ingredient, IngredientDTO>(ingredient);
+        }
+
         public void Update(IngredientDTO entity)
         {
-            //IngredientDTO entity = _db.GetIngredientRepo.Get(id);
             Ingredient ingredient = _mapper.Map<Ingredient>(entity);
             _db.GetIngredientRepo.Update(ingredient);
             _db.Save();

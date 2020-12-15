@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace RecipeApp.Business_Logic.DTO
 {
-    public class RecipeDTO
+    public class RecipeDTOShort
     {
-        public int id { get; set; }
+        public Guid id { get; set; }
         public string Name { get; set; }
         public TimeSpan MakeTime { get; set; }
         public Uri Image { get; set; }
-        public string Description { get; set; }
+        public string DescriptionShort { get; set; }
     }
 }

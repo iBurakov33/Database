@@ -23,34 +23,33 @@ namespace RecipeApp.Business_Logic.Services
             _mapper = mapper;
         }
 
-        public IEnumerable<RecipeDTO> GetAll()
+        public IEnumerable<RecipeDTOShort> GetAll()
         {
-            var recipes = _db.GetRecipeRepo.GetAll().OrderByDescending(recipes => recipes.MakeTime);
-            return _mapper.Map<IEnumerable<Recipe>, IEnumerable<RecipeDTO>>(recipes);
+            var recipes = _db.GetRecipeRepo.GetAll();
+            return _mapper.Map<IEnumerable<Recipe>, IEnumerable<RecipeDTOShort>>(recipes);
         }
                 
-        public RecipeDTO Get(int id)
+        public RecipeDTOFull Get(Guid id)
         {
             var recipe = _db.GetRecipeRepo.Get(id);
-            return _mapper.Map<Recipe, RecipeDTO>(recipe);
+            return _mapper.Map<Recipe, RecipeDTOFull>(recipe);
         }
 
-        public void Add(RecipeDTO entity)
+        public void Add(RecipeDTOFull entity)
         {
             Recipe recipe = _mapper.Map<Recipe>(entity);
             _db.GetRecipeRepo.Add(recipe);
             _db.Save();
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
             _db.GetRecipeRepo.Delete(id);
             _db.Save();
         }
 
-        public void Update(RecipeDTO entity)
+        public void Update(RecipeDTOFull entity)
         {
-            //
             Recipe recipe = _mapper.Map<Recipe>(entity);
             _db.GetRecipeRepo.Update(recipe);
             _db.Save();
