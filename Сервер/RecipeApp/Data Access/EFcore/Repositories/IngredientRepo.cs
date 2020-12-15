@@ -50,6 +50,11 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
             throw new NotImplementedException();
         }
 
+        public Ingredient GetById(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Ingredient GetByName(string name)
         {
             return _context.Ingredients.Single(ing => ing.Name == name);

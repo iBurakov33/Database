@@ -20,27 +20,6 @@ namespace RecipeApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Recipes",
-                columns: table => new
-                {
-                    id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: true),
-                    MakeTime = table.Column<TimeSpan>(type: "interval", nullable: false),
-                    Image = table.Column<string>(type: "text", nullable: true),
-                    CreationDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    DescriptionShort = table.Column<string>(type: "text", nullable: true),
-                    DescriptionFull = table.Column<string>(type: "text", nullable: true),
-                    Nutritions = table.Column<double>(type: "double precision", nullable: false),
-                    Carbohydrates = table.Column<double>(type: "double precision", nullable: false),
-                    Fats = table.Column<double>(type: "double precision", nullable: false),
-                    Proteins = table.Column<double>(type: "double precision", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Recipes", x => x.id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Types",
                 columns: table => new
                 {
@@ -65,6 +44,34 @@ namespace RecipeApp.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Recipes",
+                columns: table => new
+                {
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    MakeTime = table.Column<TimeSpan>(type: "interval", nullable: false),
+                    Image = table.Column<string>(type: "text", nullable: true),
+                    CreationDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    UserId = table.Column<Guid>(type: "uuid", nullable: false),
+                    DescriptionShort = table.Column<string>(type: "text", nullable: true),
+                    DescriptionFull = table.Column<string>(type: "text", nullable: true),
+                    Nutritions = table.Column<double>(type: "double precision", nullable: false),
+                    Carbohydrates = table.Column<double>(type: "double precision", nullable: false),
+                    Fats = table.Column<double>(type: "double precision", nullable: false),
+                    Proteins = table.Column<double>(type: "double precision", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Recipes", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Recipes_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -119,6 +126,11 @@ namespace RecipeApp.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Recipes_UserId",
+                table: "Recipes",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Recipes_Ingredients_IngredientId",
                 table: "Recipes_Ingredients",
                 column: "IngredientId");
@@ -148,9 +160,6 @@ namespace RecipeApp.Migrations
                 name: "Recipes_Types");
 
             migrationBuilder.DropTable(
-                name: "Users");
-
-            migrationBuilder.DropTable(
                 name: "Ingredients");
 
             migrationBuilder.DropTable(
@@ -158,6 +167,9 @@ namespace RecipeApp.Migrations
 
             migrationBuilder.DropTable(
                 name: "Types");
+
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }

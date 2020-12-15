@@ -32,7 +32,7 @@ namespace RecipeApp.Pages
             recipe = _service.Get(id);
             try
             {
-                recipe_Ingredient = _ingredientService.GetByName(recipe.Name);
+                recipe_Ingredient = _ingredientService.GetById(recipe.id);
             }
             catch (InvalidOperationException)
             {
@@ -41,7 +41,7 @@ namespace RecipeApp.Pages
             NoInredients:
             try
             {
-                recipe_Type = _typeService.GetByName(recipe.Name);
+                recipe_Type = _typeService.GetById(recipe.id);
             }
             catch (InvalidOperationException)
             {

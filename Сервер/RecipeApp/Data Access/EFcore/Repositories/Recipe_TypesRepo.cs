@@ -55,6 +55,15 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
             throw new NotImplementedException();
         }
 
+        public Recipe_Type GetById(Guid id)
+        {
+            var amount = _context.Recipes_Types
+                .Include(recipe => recipe.recipe)
+                .Include(type => type.type)
+                .Single(amount => amount.recipe.id == id);
+            return amount;
+        }
+
         public Recipe_Type GetByName(string name)
         {
             var amount = _context.Recipes_Types

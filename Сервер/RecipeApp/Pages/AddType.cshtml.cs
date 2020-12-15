@@ -49,7 +49,7 @@ namespace RecipeApp.Pages
                 }
                 type.TypeId = typeMain.id;
                 _service.Add(type);
-                return Redirect(Url.Page("/Index", new { login = user.Login }));
+                return Redirect(Url.Page("/Recipe_ingredient", new { id = recipe.id, login = user.Login }));
             }
             return Page();
         }

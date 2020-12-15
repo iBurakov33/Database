@@ -59,5 +59,11 @@ namespace RecipeApp.Business_Logic.Services
             var recipe_type = _db.GetRecipe_TypeRepo.GetByName(name);
             return _mapper.Map<Recipe_Type, Recipe_TypeDTO>(recipe_type);
         }
+
+        public Recipe_TypeDTO GetById(Guid id)
+        {
+            var recipe_type = _db.GetRecipe_TypeRepo.GetById(id);
+            return _mapper.Map<Recipe_Type, Recipe_TypeDTO>(recipe_type);
+        }
     }
 }

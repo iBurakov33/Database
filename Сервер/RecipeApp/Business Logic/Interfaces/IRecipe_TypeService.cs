@@ -14,5 +14,6 @@ namespace RecipeApp.Business_Logic.Interfaces
         IEnumerable<Recipe_TypeDTO> GetAll();
         void Update(Recipe_TypeDTO entity);
         Recipe_TypeDTO GetByName(string name);
+        Recipe_TypeDTO GetById(Guid id);
     }
 }

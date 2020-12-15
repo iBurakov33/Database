@@ -69,7 +69,12 @@ namespace RecipeApp.Migrations
                     b.Property<double>("Proteins")
                         .HasColumnType("double precision");
 
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
                     b.HasKey("id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Recipes");
                 });
@@ -154,6 +159,17 @@ namespace RecipeApp.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("RecipeApp.Data_Access.Models.Recipe", b =>
+                {
+                    b.HasOne("RecipeApp.Data_Access.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("RecipeApp.Data_Access.Models.Recipe_Ingredient", b =>

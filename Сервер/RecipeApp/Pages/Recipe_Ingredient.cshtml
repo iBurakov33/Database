@@ -30,13 +30,17 @@
 </div>
 
 
-<p>
-    <img style=" box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); width:700px; margin-right:25px; float:left" src=@recipe.Image>
+<div>
+    <img style="        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        width: 700px;
+        margin-bottom: 25px;
+        margin-right: 25px;
+        float: left" src=@recipe.Image>
     <div style="font-size:20px;">@recipe.DescriptionFull</div>
-</p>
-
- <div style="font-size:20px; font-weight:500; color:cornflowerblue; margin-top:25px;">  <i class="small material-icons">access_time</i> Время приготовления: @recipe.MakeTime</div>
- <div style="margin-top:10px;">
+</div>
+<br />
+ <div style="font-size:20px; font-weight:500; color:cornflowerblue; margin-top:25px; clear:left;">  <i class="small material-icons">access_time</i> Время приготовления: @recipe.MakeTime</div>
+ <div style="margin:10px;">
      <div style="font-size:22px;font-weight:600; margin:10px;">Энергетическая ценность (на 100гр):</div>
      <div style="font-size:20px;"><span>Калорийность-</span>@recipe.Nutritions ккал</div>
      <div style="font-size:20px;"><span>Белки-</span>@recipe.Proteins г</div>

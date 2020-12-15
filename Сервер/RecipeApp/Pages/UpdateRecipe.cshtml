@@ -7,6 +7,8 @@
 @{ var recipe = Model.recipe;}
 <div asp-validation-summary="All"></div>
 <form method="POST" asp-route-id="@recipe.id">
+    <input asp-for="user.Login" type="hidden" />
+    <input asp-for="user.id" type="hidden" />
     <div>
         <label>Имя</label><br /><input asp-for="recipe.Name" />
         <span asp-validation-for="recipe.Name"></span>

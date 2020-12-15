@@ -49,6 +49,11 @@ namespace RecipeApp.Data_Access.EFcore.Repositories
             throw new NotImplementedException();
         }
 
+        public Recipe GetById(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Recipe GetByName(string name)
         {
             throw new NotImplementedException();

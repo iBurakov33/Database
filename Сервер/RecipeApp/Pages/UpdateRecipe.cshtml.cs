@@ -33,6 +33,7 @@ namespace RecipeApp.Pages
                 return NotFound();
             }
             recipe.id = id;
+            recipe.UserId = user.id;
             service.Update(recipe);
             if (!ModelState.IsValid)
             {

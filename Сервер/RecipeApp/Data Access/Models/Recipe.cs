@@ -13,6 +13,8 @@ namespace RecipeApp.Data_Access.Models
         public TimeSpan MakeTime { get; set; }
         public Uri Image { get; set; }
         public DateTime CreationDate { get; set; }
+        public User User { get; set; }
+        public Guid UserId { get; set; }
         public string DescriptionShort { get; set; }
         public string  DescriptionFull { get; set; }
         public double Nutritions { get; set; }

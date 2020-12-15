@@ -30,6 +30,7 @@ namespace RecipeApp.Pages
         {
             if (ModelState.IsValid)
             {
+                recipe.UserId = user.id;
                 _service.Add(recipe);
                 return Redirect(Url.Page("/Index", new { login = user.Login }));
             }

@@ -15,5 +15,6 @@ namespace RecipeApp.Data_Access.Interfaces
         void Update(T entity);
         void Delete(Guid id);
         public void AddDefault(T entity, Guid id);
+        T GetById(Guid id);
     }
 }

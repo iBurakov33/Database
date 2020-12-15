@@ -51,7 +51,7 @@ namespace RecipeApp.Pages
                 }
                 ingredient.IngredientId = ingredientMain.id;
                 _service.Add(ingredient);
-                return Redirect(Url.Page("/Index", new { login = user.Login }));
+                return Redirect(Url.Page("/Recipe_ingredient", new { id = recipe.id, login = user.Login }));
             }
             return Page();
         }
